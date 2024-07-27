@@ -1,15 +1,3 @@
-/**
- * TO DO:
- * - Ajouter champs adresse + email
- * - Ajouter Contact dans une modale
- * - Recherche dans une modale
- * - Modifier un contact
- * - Utiliser Bootstrap pour plus joli et responsive
- * - Affichage des personnes dans des onglets en fonction de la lettre de début de leur nom puis par ordre alphabétique
- * - Proposer de faire une recherche par ville
- * - Enregistrement des données en JSON dans le backend par la suite
- */
-
 import {Contact} from "../models/Contact.js";
 
 // Variables générales
