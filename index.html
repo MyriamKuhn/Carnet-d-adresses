@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnet d'adresses</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <h1>MON CARNET D'ADRESSES</h1>
+
+    <form id="formAdd">
+        <fieldset>
+            <legend>Ajouter un contact</legend>
+            <label>Nom :
+                <input type="text" name="firstname" placeholder="Dupond" required>
+            </label>
+            <label>Prénom :
+                <input type="text" name="lastname" placeholder="José" required>
+            </label>
+            <label>Numéro de téléphone :
+                <input type="tel" name="phone" placeholder="0625148975" required>
+            </label>
+            <button type="submit" id="submit">Ajouter</button>
+        </fieldset>
+    </form>
+    <form id="formSearch">
+        <fieldset>
+            <legend>Rechercher un contact</legend>
+            <input type="text" name="search" placeholder="Qui recherchez-vous ?" required>
+            <button type="submit" id="search">Rechercher</button>
+        </fieldset>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Numéro de téléphone</th>
+            </tr>
+        </thead>
+        <tbody class="js-table-body">
+            <!-- Emplacement des données -->
+        </tbody>
+    </table>
+
+
+    <script type="module" src="./assets/js/controller/ContactController.js"></script>
+</body>
+</html>
