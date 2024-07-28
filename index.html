@@ -6,6 +6,7 @@
     <title>Carnet d'adresses</title>
     <link rel="stylesheet" href="./assets/css/main.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./assets/css/flags.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -102,7 +103,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-signin w-100 m-auto">
+                        <div class="w-100 m-auto">
                             <form>
                                 <h5 class="h3 mb-3 fw-normal">Connectez-vous !</h5>
                                 <div class="form-floating">
@@ -141,7 +142,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-signin w-100 m-auto">
+                        <div class="w-100 m-auto">
                             <form>
                                 <h5 class="h3 mb-3 fw-normal">Inscrivez-vous !</h5>
                                 <div class="form-floating">
@@ -216,7 +217,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-signin w-100 m-auto">
+                        <div class="w-100 m-auto">
                             <form>
                                 <h5 class="h3 fw-normal">Récupérez votre mot de passe</h5>
                                 <p class="mb-3">Entrez votre adresse email de connexion et nous vous enverrons un lien de récupération de mot de passe.</p>
@@ -241,40 +242,62 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-signin w-100 m-auto">
+                        <div class="w-100 m-auto">
                             <form>
-                                <h5 class="h3 mb-3 fw-normal">Ajoutez votre contact</h5>
-                                <div class="form-floating">
-                                    <select class="form-select" id="floatingSelect" aria-label="Gender" required>
-                                        <option selected value="">&nbsp;</option>
-                                        <option value="Monsieur">Monsieur</option>
-                                        <option value="Madame">Madame</option>
-                                        <option value="Iel">Iel</option>
-                                    </select>
-                                    <label for="floatingSelect">Sélectionnez</label>
+                                <h5 class="h3 mb-5 fw-normal">Ajoutez votre contact</h5>
+                                <div class="input-group justify-content-around pb-3">
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-male" id="gender-male" required>
+                                        <i class="bi bi-gender-male fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-female" id="gender-female">
+                                        <i class="bi bi-gender-female fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-neuter" id="gender-neuter">
+                                        <i class="bi bi-gender-neuter fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-ambiguous" id="gender-ambiguous">
+                                        <i class="bi bi-gender-ambiguous fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-trans" id="gender-trans">
+                                        <i class="bi bi-gender-trans fs-4"></i>
+                                    </label>
                                 </div>
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="text" aria-label="First name" class="form-control" id="floatingInputName" placeholder="Nom" required>
-                                        <label for="floatingInputName">Nom</label>
+                                        <input type="text" aria-label="First name" class="form-control" id="FirstName" placeholder="Nom" required>
+                                        <label for="FirstName">Nom</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="text" aria-label="Last name" class="form-control" id="floatingInputLastName" placeholder="Prénom" required>
-                                        <label for="floatingInputLastName">Prénom</label>
+                                        <input type="text" aria-label="Last name" class="form-control" id="LastName" placeholder="Prénom" required>
+                                        <label for="LastName">Prénom</label>
                                     </div>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="text" aria-label="Adress" class="form-control" id="floatingInputAdress" placeholder="Adresse" required>
-                                    <label for="floatingInputAdress">Adresse</label>
+                                    <input type="text" aria-label="Address" class="form-control" id="Address" placeholder="Adresse" required>
+                                    <label for="Address">Adresse</label>
                                 </div>
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="tel" aria-label="Zip Code" class="form-control" id="floatingInputZipCode" placeholder="Code postal" required>
-                                        <label for="floatingInputZipCode">Code postal</label>
+                                        <select class="form-select" id="Country" aria-label="Country selection" required>
+                                            <option selected><i class="flag flag-us"></i></option>
+                                            <option value="flag flag-us"><p class="flag flag-us">One</p></option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                        <label for="Country">Pays</label>
                                     </div>
-                                    <div class="form-floating">
-                                        <input type="text" aria-label="City" class="form-control" id="floatingInputCity" placeholder="Ville" required>
-                                        <label for="floatingInputCity">Ville</label>
+                                    <div class="form-floating w-25">
+                                        <input type="tel" aria-label="Zip Code" class="form-control" id="ZipCode" placeholder="Code postal" required>
+                                        <label for="ZipCode">Code postal</label>
+                                    </div>
+                                    <div class="form-floating w-50">
+                                        <input type="text" aria-label="City" class="form-control" id="City" placeholder="Ville" required>
+                                        <label for="City">Ville</label>
                                     </div>
                                 </div>
                                 <div class="form-floating mb-5">
