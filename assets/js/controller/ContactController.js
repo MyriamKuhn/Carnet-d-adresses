@@ -16,7 +16,7 @@ document.getElementById('submitAdd').addEventListener('click', (event) => {
 });
 
 // Clic sur Rechercher
-document.getElementById('search').addEventListener('click', (event) => {
+document.getElementById('submitSearch').addEventListener('click', (event) => {
     event.preventDefault();
     const form = document.getElementById('formSearch');
     const data = new FormData(form);
@@ -36,11 +36,9 @@ document.addEventListener('click', (event) => {
     };
 });
 
-
 // Ajouter des contacts
 const addContactToList = (firstname, lastname, phone) => {
     const newContact = new Contact(firstname, lastname, phone);
-    console.log(newContact)
     let isFounded = false;
     if (contactList.length != 0) {
         for (let i=0; i < contactList.length; i++) {
@@ -79,7 +77,7 @@ const searchContactInList = (word) => {
             contactListSearched.push(searchedContact);
         }
     };
-    displayInHtml(contactListSearched);
+    displayInModal(contactListSearched);
 };
 
 // Afficher les contacts dans un tableau
@@ -107,6 +105,25 @@ const displayInHtml = (list) => {
     };
 };
 
+// Afficher les contacts recherchés dans la modale
+const displayInModal = (list) => {
+    const tbody = document.querySelector('.js-table-search');
+    tbody.innerHTML = "";
+    for (let i=0; i < list.length; i++) {
+        const tr = document.createElement('tr');
+        const tdFirst = document.createElement('td');
+        tdFirst.textContent = list[i].firstname;
+        const tdLast = document.createElement('td');
+        tdLast.textContent = list[i].lastname;
+        const tdPhone = document.createElement('td');
+        tdPhone.textContent = list[i].phone;
+        
+        tr.appendChild(tdFirst);
+        tr.appendChild(tdLast);
+        tr.appendChild(tdPhone);
+        tbody.appendChild(tr);
+    };
+};
 
 
 

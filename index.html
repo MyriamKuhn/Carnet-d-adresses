@@ -31,7 +31,7 @@
                             <a class="nav-link link-primary text-uppercase" href="#modalAddContact" data-bs-toggle="modal">Ajouter un contact</a>
                         </li>
                         <li class="nav-item px-lg-5">
-                            <a class="nav-link link-primary text-uppercase" href="#">Rechercher un contact</a>
+                            <a class="nav-link link-primary text-uppercase" href="#modalSearchContact" data-bs-toggle="modal">Rechercher un contact</a>
                         </li>
                     </ul>
                     <div class="d-flex justify-content-center p-3 py-lg-0 pe-lg-0 d-lg-block ps-lg-5">
@@ -47,14 +47,6 @@
     <!-- START : Main -->
     <main class="container pt-5 pb-5">
     <h1>MON CARNET D'ADRESSES</h1>
-
-    <form id="formSearch">
-        <fieldset>
-            <legend>Rechercher un contact</legend>
-            <input type="text" name="search" placeholder="Qui recherchez-vous ?" required>
-            <button type="submit" id="search">Rechercher</button>
-        </fieldset>
-    </form>
 
     <table>
         <thead>
@@ -312,7 +304,7 @@
             </div>
         </div>
         <!-- Search Contact -->
-        <div class="modal fade" id="modalAddContact" aria-hidden="true" aria-labelledby="modalAddContactLabel" tabindex="-1">
+        <div class="modal fade" id="modalSearchContact" aria-hidden="true" aria-labelledby="modalSearchContactLabel" tabindex="-1">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -322,83 +314,25 @@
                     </div>
                     <div class="modal-body">
                         <div class="w-100 m-auto">
-                            <form id="formAdd">
-                                <h5 class="h3 mb-5 fw-normal">Ajoutez votre contact</h5>
-                                <div class="input-group justify-content-around pb-3">
-                                    <label class="form-check-label d-flex align-items-center justify-content-center">
-                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-male" id="gender-male" required>
-                                        <i class="bi bi-gender-male fs-4"></i>
-                                    </label>
-                                    <label class="form-check-label d-flex align-items-center justify-content-center">
-                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-female" id="gender-female">
-                                        <i class="bi bi-gender-female fs-4"></i>
-                                    </label>
-                                    <label class="form-check-label d-flex align-items-center justify-content-center">
-                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-neuter" id="gender-neuter">
-                                        <i class="bi bi-gender-neuter fs-4"></i>
-                                    </label>
-                                    <label class="form-check-label d-flex align-items-center justify-content-center">
-                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-ambiguous" id="gender-ambiguous">
-                                        <i class="bi bi-gender-ambiguous fs-4"></i>
-                                    </label>
-                                    <label class="form-check-label d-flex align-items-center justify-content-center">
-                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-trans" id="gender-trans">
-                                        <i class="bi bi-gender-trans fs-4"></i>
-                                    </label>
-                                </div>
-                                <div class="input-group">
-                                    <div class="form-floating">
-                                        <input type="text" name="firstname" class="form-control" id="FirstName" placeholder="Nom" required>
-                                        <label for="FirstName">Nom</label>
-                                    </div>
-                                    <div class="form-floating">
-                                        <input type="text" name="lastname" class="form-control" id="LastName" placeholder="Prénom" required>
-                                        <label for="LastName">Prénom</label>
-                                    </div>
-                                </div>
+                            <form id="formSearch">
+                                <h5 class="h3 mb-5 fw-normal">Recherchez un contact</h5>
                                 <div class="form-floating">
-                                    <input type="text" aria-label="Address" class="form-control" id="Address" placeholder="Adresse" required>
-                                    <label for="Address">Adresse</label>
+                                    <input type="text" name="search" class="form-control" id="Search" placeholder="Entrez une partie d'un nom ou d'un prénom" required>
+                                    <label for="Search">Qui recherchez-vous ?</label>
                                 </div>
-                                <div class="input-group">
-                                    <button class="btn btn-outline-primary dropdown-toggle country-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">Pays</button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item country-select" data-flag="flag-fr"><div class="flag flag-fr me-2"></div>France</a></li>
-                                        <li><a class="dropdown-item country-select" data-flag="flag-de"><div class="flag flag-de me-2"></div>Allemagne</a></li>
-                                        <li><a class="dropdown-item country-select" data-flag="flag-us"><div class="flag flag-us me-2"></div>USA</a></li>
-                                        <li><a class="dropdown-item country-select" data-flag="flag-england"><div class="flag flag-england me-2"></div>GB</a></li>
-                                        <li><a class="dropdown-item country-select" data-flag="flag-es"><div class="flag flag-es me-2"></div>Espagne</a></li>
-                                        <li><a class="dropdown-item country-select" data-flag="flag-pt"><div class="flag flag-pt me-2"></div>Portugual</a></li>
-                                        <li><a class="dropdown-item country-select" data-flag="flag-it"><div class="flag flag-it me-2"></div>Italie</a></li>
-                                    </ul>
-                                    <div class="form-floating">
-                                        <input type="number" aria-label="Zip Code" class="form-control no-spinners" id="ZipCode" placeholder="Code postal" required>
-                                        <label for="ZipCode">Code postal</label>
-                                    </div>
-                                    <div class="form-floating w-50">
-                                        <input type="text" aria-label="City" class="form-control" id="City" placeholder="Ville" required>
-                                        <label for="City">Ville</label>
-                                    </div>
-                                </div>
-                                <div class="input-group mt-3">
-                                    <div class="form-floating">
-                                        <input type="tel" name="phone" class="form-control" id="Phone" placeholder="Fixe" required>
-                                        <label for="Phone">Fixe</label>
-                                    </div>
-                                    <div class="form-floating">
-                                        <input type="tel" aria-label="Mobil" class="form-control" id="Mobil" placeholder="Portable" required>
-                                        <label for="Mobil">Portable</label>
-                                    </div>
-                                </div>
-                                <div class="form-floating mt-3">
-                                    <input type="email" class="form-control" id="Mail" placeholder="email@email.com" required>
-                                    <label for="Mail">Adresse mail</label>
-                                </div>
-                                <div class="form-floating mt-3">
-                                    <textarea class="form-control" placeholder="Notes" id="Notes" style="height: 100px"></textarea>
-                                    <label for="Notes">Notes</label>
-                                </div>
-                                <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" type="submit" id="submitAdd">Ajouter</button>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Numéro de téléphone</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="js-table-search">
+                                        <!-- Emplacement des données -->
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" type="submit" id="submitSearch">Rechercher</button>
                             </form>
                         </div>
                     </div>
