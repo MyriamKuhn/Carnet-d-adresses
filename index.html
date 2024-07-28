@@ -4,33 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carnet d'adresses</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./assets/css/flags.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <h1>MON CARNET D'ADRESSES</h1>
 
-    <form id="formAdd">
-        <fieldset>
-            <legend>Ajouter un contact</legend>
-            <label>Nom :
-                <input type="text" name="firstname" placeholder="Dupond" required>
-            </label>
-            <label>Prénom :
-                <input type="text" name="lastname" placeholder="José" required>
-            </label>
-            <label>Numéro de téléphone :
-                <input type="tel" name="phone" placeholder="0625148975" required>
-            </label>
-            <button type="submit" id="submit">Ajouter</button>
-        </fieldset>
-    </form>
-    <form id="formSearch">
-        <fieldset>
-            <legend>Rechercher un contact</legend>
-            <input type="text" name="search" placeholder="Qui recherchez-vous ?" required>
-            <button type="submit" id="search">Rechercher</button>
-        </fieldset>
-    </form>
+<body>
+    <!-- START : Header -->
+    <header class="header">
+        <!-- START : Navbar -->
+        <nav class="navbar navbar-expand-lg bg-white shadow fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold logo-text fs-1 w-25" href="#">
+                    <img src="./assets/images/logo.svg" class="logo-img" alt="Logo de ContactSaver">
+                    ContactSaver
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-lg-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center pt-2 pt-lg-0 pe-lg-5">
+                        <li class="nav-item px-lg-5">
+                            <a class="nav-link link-primary text-uppercase" href="#modalAddContact" data-bs-toggle="modal">Ajouter un contact</a>
+                        </li>
+                        <li class="nav-item px-lg-5">
+                            <a class="nav-link link-primary text-uppercase" href="#modalSearchContact" data-bs-toggle="modal">Rechercher un contact</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-center p-3 py-lg-0 pe-lg-0 d-lg-block ps-lg-5">
+                        <button type="button" class="btn btn-primary text-uppercase" data-bs-target="#modalConnexion" data-bs-toggle="modal">Connexion</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- END : Navbar -->
+    </header>
+    <!-- END : Header -->
+    
+    <!-- START : Main -->
+    <main class="container pt-5 pb-5">
+    <h1>MON CARNET D'ADRESSES</h1>
 
     <table>
         <thead>
@@ -44,8 +60,295 @@
             <!-- Emplacement des données -->
         </tbody>
     </table>
+    </main>
+    <!-- END : Main -->
 
+    <!-- START : Footer -->
+    <footer>
+        <!-- TODO: Footer -->
+    </footer>
+    <!-- END : Footer -->
 
+    <!-- START : Modals -->
+        <!-- Connexion -->
+        <div class="modal fade" id="modalConnexion" aria-hidden="true" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
+                        <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="w-100 m-auto">
+                            <form>
+                                <h5 class="h3 mb-3 fw-normal">Connectez-vous !</h5>
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="floatingInput" placeholder="email@email.com" required>
+                                    <label for="floatingInput">Adresse mail</label>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control inputPasswordConnect" id="floatingPassword" placeholder="Mot de passe" required>
+                                        <label for="floatingPassword">Mot de passe</label>
+                                    </div>
+                                    <span class="input-group-text"><i class="bi bi-eye-slash toggleIcon toggleIconConnect"></i></span>
+                                </div>
+                                <div class="form-check text-start my-3">
+                                    <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Se souvenir de moi</label>
+                                </div>
+                                <button class="btn btn-warning w-100 py-2 text-white text-uppercase fw-bold" type="submit">Se connecter</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer flex-column align-items-end">
+                        <p class="text-end"><a data-bs-target="#modalPassForgot" data-bs-toggle="modal" class="text-primary modal-connect-link">Mot de passe oublié ?</a></p>
+                        <p class="text-body-secondary text-end">Pas encore inscrit ? <a data-bs-target="#modalSubscribe" data-bs-toggle="modal" class="text-primary modal-connect-link">Alors c'est par ici !</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Subscribing -->
+        <div class="modal fade" id="modalSubscribe" aria-hidden="true" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
+                        <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="w-100 m-auto">
+                            <form>
+                                <h5 class="h3 mb-3 fw-normal">Inscrivez-vous !</h5>
+                                <div class="form-floating">
+                                    <select class="form-select" id="floatingSelect" aria-label="Gender" required>
+                                        <option selected value="">&nbsp;</option>
+                                        <option value="Monsieur">Monsieur</option>
+                                        <option value="Madame">Madame</option>
+                                        <option value="Iel">Iel</option>
+                                    </select>
+                                    <label for="floatingSelect">Sélectionnez</label>
+                                </div>
+                                <div class="input-group">
+                                    <div class="form-floating">
+                                        <input type="text" aria-label="First name" class="form-control" id="floatingInputName" placeholder="Nom" required>
+                                        <label for="floatingInputName">Nom</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="text" aria-label="Last name" class="form-control" id="floatingInputLastName" placeholder="Prénom" required>
+                                        <label for="floatingInputLastName">Prénom</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="text" aria-label="Adress" class="form-control" id="floatingInputAdress" placeholder="Adresse" required>
+                                    <label for="floatingInputAdress">Adresse</label>
+                                </div>
+                                <div class="input-group">
+                                    <div class="form-floating">
+                                        <input type="number" aria-label="Zip Code" class="form-control no-spinners" id="floatingInputZipCode" placeholder="Code postal" required>
+                                        <label for="floatingInputZipCode">Code postal</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="text" aria-label="City" class="form-control" id="floatingInputCity" placeholder="Ville" required>
+                                        <label for="floatingInputCity">Ville</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-5">
+                                    <input type="tel" aria-label="Tel" class="form-control" id="floatingInputPhone" placeholder="Téléphone" required>
+                                    <label for="floatingInputPhone">Téléphone</label>
+                                </div>
+                                <div class="form-floating mb-1">
+                                    <input type="email" class="form-control" id="floatingInputMail" placeholder="email@email.com" required>
+                                    <label for="floatingInputMail">Adresse mail</label>
+                                </div>
+                                <div class="input-group">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control inputPasswordSubscribe" id="floatingPasswordSubscribe" placeholder="Mot de passe" required>
+                                        <label for="floatingPasswordSubscribe">Mot de passe</label>
+                                    </div>
+                                    <span class="input-group-text"><i class="bi bi-eye-slash toggleIcon toggleIconSubscribe"></i></span>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control inputPasswordConfirm" id="floatingPasswordConfirm" placeholder="Confirmez votre mot de passe" required>
+                                        <label for="floatingPasswordConfirm">Confirmez votre mot de passe</label>
+                                    </div>
+                                    <span class="input-group-text"><i class="bi bi-eye-slash toggleIcon toggleIconConfirm"></i></span>
+                                </div>
+                                <button class="btn btn-warning w-100 py-2 text-white submitButton text-uppercase fw-bold" type="submit">S'inscrire</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Password forget -->
+        <div class="modal fade" id="modalPassForgot" aria-hidden="true" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
+                        <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="w-100 m-auto">
+                            <form>
+                                <h5 class="h3 fw-normal">Récupérez votre mot de passe</h5>
+                                <p class="mb-3">Entrez votre adresse email de connexion et nous vous enverrons un lien de récupération de mot de passe.</p>
+                                <div class="form-floating pb-3">
+                                    <input type="email" class="form-control" id="floatingInputEMail" placeholder="email@email.com" required>
+                                    <label for="floatingInputEMail">Adresse mail</label>
+                                </div>
+                                <button class="btn btn-warning w-100 py-2 px-2 text-white text-uppercase fw-bold" type="submit">Envoyer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Contact -->
+        <div class="modal fade" id="modalAddContact" aria-hidden="true" tabindex="-1">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
+                        <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="w-100 m-auto">
+                            <form id="formAdd" class="needs-validation">
+                                <h5 class="h3 mb-4 fw-normal">Ajoutez votre contact</h5>
+                                <div id="alertNoName" class="alert alert-danger mb-5 visually-hidden" role="alert">
+                                    Veuillez corriger votre entrée !
+                                </div>
+                                <div class="input-group justify-content-around pb-3">
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-male" id="gender-male">
+                                        <i class="bi bi-gender-male fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-female" id="gender-female">
+                                        <i class="bi bi-gender-female fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-neuter" id="gender-neuter">
+                                        <i class="bi bi-gender-neuter fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-ambiguous" id="gender-ambiguous">
+                                        <i class="bi bi-gender-ambiguous fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-trans" id="gender-trans">
+                                        <i class="bi bi-gender-trans fs-4"></i>
+                                    </label>
+                                </div>
+                                <div class="input-group">
+                                    <div class="form-floating">
+                                        <input type="text" name="firstname" class="form-control" id="FirstName" placeholder="Nom">
+                                        <label for="FirstName">Nom</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="text" name="lastname" class="form-control" id="LastName" placeholder="Prénom">
+                                        <label for="LastName">Prénom</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="text" aria-label="Address" class="form-control" id="Address" placeholder="Adresse">
+                                    <label for="Address">Adresse</label>
+                                </div>
+                                <div class="input-group">
+                                    <button class="btn btn-outline-primary dropdown-toggle country-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">Pays</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item country-select" data-flag="flag-fr"><div class="flag flag-fr me-2"></div>France</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-de"><div class="flag flag-de me-2"></div>Allemagne</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-us"><div class="flag flag-us me-2"></div>USA</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-england"><div class="flag flag-england me-2"></div>GB</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-es"><div class="flag flag-es me-2"></div>Espagne</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-pt"><div class="flag flag-pt me-2"></div>Portugual</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-it"><div class="flag flag-it me-2"></div>Italie</a></li>
+                                    </ul>
+                                    <div class="form-floating">
+                                        <input type="number" aria-label="Zip Code" class="form-control no-spinners" id="ZipCode" placeholder="Code postal">
+                                        <label for="ZipCode">Code postal</label>
+                                    </div>
+                                    <div class="form-floating w-50">
+                                        <input type="text" aria-label="City" class="form-control" id="City" placeholder="Ville">
+                                        <label for="City">Ville</label>
+                                    </div>
+                                </div>
+                                <div class="input-group mt-3">
+                                    <div class="form-floating">
+                                        <input type="tel" name="phone" class="form-control" id="Phone" placeholder="Fixe">
+                                        <label for="Phone">Fixe</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="tel" aria-label="Mobil" class="form-control" id="Mobil" placeholder="Portable">
+                                        <label for="Mobil">Portable</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating mt-3">
+                                    <input type="email" class="form-control" id="Mail" placeholder="email@email.com">
+                                    <label for="Mail">Adresse mail</label>
+                                </div>
+                                <div class="form-floating mt-3">
+                                    <textarea class="form-control" placeholder="Notes" id="Notes" style="height: 100px"></textarea>
+                                    <label for="Notes">Notes</label>
+                                </div>
+                                <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" type="submit" id="submitAdd">Ajouter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search Contact -->
+        <div class="modal fade" id="modalSearchContact" aria-hidden="true" tabindex="-1">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
+                        <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="w-100 m-auto">
+                            <form id="formSearch">
+                                <h5 class="h3 mb-5 fw-normal">Recherchez un contact</h5>
+                                <div class="form-floating">
+                                    <input type="text" name="search" class="form-control" id="Search" placeholder="Entrez une partie d'un nom ou d'un prénom">
+                                    <label for="Search">Qui recherchez-vous ?</label>
+                                </div>
+                                <h3 class="pt-4 pb-2">Résultats de la recherche</h3>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Numéro de téléphone</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="js-table-search">
+                                        <!-- Emplacement des données -->
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" type="submit" id="submitSearch">Rechercher</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END : Modals -->
+
+    <!-- IMPORT des scripts -->
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="./assets/js/controller/ContactController.js"></script>
+    <script src="./assets/js/connexion.js"></script>
+    <script src="./assets/js/countrySelection.js"></script>
 </body>
 </html>

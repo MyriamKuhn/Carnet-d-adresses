@@ -5,18 +5,27 @@ let contactList = [];
 let contactListSearched = [];
 
 // Clic sur Ajouter
-document.getElementById('submit').addEventListener('click', (event) => {
+document.getElementById('submitAdd').addEventListener('click', (event) => {
     event.preventDefault();
     const form = document.getElementById('formAdd');
     const data = new FormData(form);
     const firstname = data.get('firstname');
     const lastname = data.get('lastname');
     const phone = data.get('phone');
-    addContactToList(firstname, lastname, phone);
+    if(firstname === "") {
+        document.getElementById('alertNoName').classList.remove('visually-hidden');
+        document.getElementById('FirstName').classList.add('is-invalid');
+        setTimeout(() => {
+            document.getElementById('alertNoName').classList.add('visually-hidden');
+            document.getElementById('FirstName').classList.remove('is-invalid');
+        }, 1500);
+    } else {
+        addContactToList(firstname, lastname, phone);
+    }
 });
 
 // Clic sur Rechercher
-document.getElementById('search').addEventListener('click', (event) => {
+document.getElementById('submitSearch').addEventListener('click', (event) => {
     event.preventDefault();
     const form = document.getElementById('formSearch');
     const data = new FormData(form);
@@ -30,17 +39,15 @@ document.addEventListener('click', (event) => {
     if (event.target.classList.contains('deleteBtn')) {
         const target = event.target.classList;
         const id = parseInt(target[0]);
-        let removed = contactList;
-        removed = contactList.splice(id,1);
+        let removedList = contactList;
+        removedList = contactList.splice(id,1);
         displayInHtml(contactList);
     };
 });
 
-
 // Ajouter des contacts
 const addContactToList = (firstname, lastname, phone) => {
     const newContact = new Contact(firstname, lastname, phone);
-    console.log(newContact)
     let isFounded = false;
     if (contactList.length != 0) {
         for (let i=0; i < contactList.length; i++) {
@@ -79,7 +86,7 @@ const searchContactInList = (word) => {
             contactListSearched.push(searchedContact);
         }
     };
-    displayInHtml(contactListSearched);
+    displayInModal(contactListSearched);
 };
 
 // Afficher les contacts dans un tableau
@@ -107,6 +114,25 @@ const displayInHtml = (list) => {
     };
 };
 
+// Afficher les contacts recherchés dans la modale
+const displayInModal = (list) => {
+    const tbody = document.querySelector('.js-table-search');
+    tbody.innerHTML = "";
+    for (let i=0; i < list.length; i++) {
+        const tr = document.createElement('tr');
+        const tdFirst = document.createElement('td');
+        tdFirst.textContent = list[i].firstname;
+        const tdLast = document.createElement('td');
+        tdLast.textContent = list[i].lastname;
+        const tdPhone = document.createElement('td');
+        tdPhone.textContent = list[i].phone;
+        
+        tr.appendChild(tdFirst);
+        tr.appendChild(tdLast);
+        tr.appendChild(tdPhone);
+        tbody.appendChild(tr);
+    };
+};
 
 
 
