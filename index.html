@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-lg bg-white shadow fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold logo-text fs-1 w-25" href="#">
-                    <img src="./assets/images/logo.svg" class="modal-title logo-img" id="modalPassForgotLabel" alt="Logo de ContactSaver">
+                    <img src="./assets/images/logo.svg" class="logo-img" alt="Logo de ContactSaver">
                     ContactSaver
                 </a>
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,14 +28,14 @@
                 <div class="collapse navbar-collapse justify-content-lg-end" id="navbarNav">
                     <ul class="navbar-nav align-items-center pt-2 pt-lg-0 pe-lg-5">
                         <li class="nav-item px-lg-5">
-                            <a class="nav-link link-primary" href="#modalAddContact" data-bs-toggle="modal">Ajouter un contact</a>
+                            <a class="nav-link link-primary text-uppercase" href="#modalAddContact" data-bs-toggle="modal">Ajouter un contact</a>
                         </li>
                         <li class="nav-item px-lg-5">
-                            <a class="nav-link link-primary" href="#">Rechercher un contact</a>
+                            <a class="nav-link link-primary text-uppercase" href="#">Rechercher un contact</a>
                         </li>
                     </ul>
                     <div class="d-flex justify-content-center p-3 py-lg-0 pe-lg-0 d-lg-block ps-lg-5">
-                        <button type="button" class="btn btn-primary" data-bs-target="#modalConnexion" data-bs-toggle="modal">Connexion</button>
+                        <button type="button" class="btn btn-primary text-uppercase" data-bs-target="#modalConnexion" data-bs-toggle="modal">Connexion</button>
                     </div>
                 </div>
             </div>
@@ -48,21 +48,6 @@
     <main class="container pt-5 pb-5">
     <h1>MON CARNET D'ADRESSES</h1>
 
-    <form id="formAdd">
-        <fieldset>
-            <legend>Ajouter un contact</legend>
-            <label>Nom :
-                <input type="text" name="firstname" placeholder="Dupond" required>
-            </label>
-            <label>Prénom :
-                <input type="text" name="lastname" placeholder="José" required>
-            </label>
-            <label>Numéro de téléphone :
-                <input type="tel" name="phone" placeholder="0625148975" required>
-            </label>
-            <button type="submit" id="submit">Ajouter</button>
-        </fieldset>
-    </form>
     <form id="formSearch">
         <fieldset>
             <legend>Rechercher un contact</legend>
@@ -121,7 +106,7 @@
                                     <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">Se souvenir de moi</label>
                                 </div>
-                                <button class="btn btn-warning w-100 py-2 text-white" type="submit">Se connecter</button>
+                                <button class="btn btn-warning w-100 py-2 text-white text-uppercase fw-bold" type="submit">Se connecter</button>
                             </form>
                         </div>
                     </div>
@@ -170,7 +155,7 @@
                                 </div>
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="tel" aria-label="Zip Code" class="form-control" id="floatingInputZipCode" placeholder="Code postal" required>
+                                        <input type="number" aria-label="Zip Code" class="form-control no-spinners" id="floatingInputZipCode" placeholder="Code postal" required>
                                         <label for="floatingInputZipCode">Code postal</label>
                                     </div>
                                     <div class="form-floating">
@@ -200,7 +185,7 @@
                                     </div>
                                     <span class="input-group-text"><i class="bi bi-eye-slash toggleIcon toggleIconConfirm"></i></span>
                                 </div>
-                                <button class="btn btn-warning w-100 py-2 text-white submitButton" type="submit">S'inscrire</button>
+                                <button class="btn btn-warning w-100 py-2 text-white submitButton text-uppercase fw-bold" type="submit">S'inscrire</button>
                             </form>
                         </div>
                     </div>
@@ -225,7 +210,7 @@
                                     <input type="email" class="form-control" id="floatingInputEMail" placeholder="email@email.com" required>
                                     <label for="floatingInputEMail">Adresse mail</label>
                                 </div>
-                                <button class="btn btn-warning w-100 py-2 px-2 text-white" type="submit">Envoyer</button>
+                                <button class="btn btn-warning w-100 py-2 px-2 text-white text-uppercase fw-bold" type="submit">Envoyer</button>
                             </form>
                         </div>
                     </div>
@@ -243,7 +228,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="w-100 m-auto">
-                            <form>
+                            <form id="formAdd">
                                 <h5 class="h3 mb-5 fw-normal">Ajoutez votre contact</h5>
                                 <div class="input-group justify-content-around pb-3">
                                     <label class="form-check-label d-flex align-items-center justify-content-center">
@@ -269,11 +254,11 @@
                                 </div>
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="text" aria-label="First name" class="form-control" id="FirstName" placeholder="Nom" required>
+                                        <input type="text" name="firstname" class="form-control" id="FirstName" placeholder="Nom" required>
                                         <label for="FirstName">Nom</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="text" aria-label="Last name" class="form-control" id="LastName" placeholder="Prénom" required>
+                                        <input type="text" name="lastname" class="form-control" id="LastName" placeholder="Prénom" required>
                                         <label for="LastName">Prénom</label>
                                     </div>
                                 </div>
@@ -282,17 +267,18 @@
                                     <label for="Address">Adresse</label>
                                 </div>
                                 <div class="input-group">
+                                    <button class="btn btn-outline-primary dropdown-toggle country-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">Pays</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item country-select" data-flag="flag-fr"><div class="flag flag-fr me-2"></div>France</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-de"><div class="flag flag-de me-2"></div>Allemagne</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-us"><div class="flag flag-us me-2"></div>USA</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-england"><div class="flag flag-england me-2"></div>GB</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-es"><div class="flag flag-es me-2"></div>Espagne</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-pt"><div class="flag flag-pt me-2"></div>Portugual</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-it"><div class="flag flag-it me-2"></div>Italie</a></li>
+                                    </ul>
                                     <div class="form-floating">
-                                        <select class="form-select" id="Country" aria-label="Country selection" required>
-                                            <option selected><i class="flag flag-us"></i></option>
-                                            <option value="flag flag-us"><p class="flag flag-us">One</p></option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                        <label for="Country">Pays</label>
-                                    </div>
-                                    <div class="form-floating w-25">
-                                        <input type="tel" aria-label="Zip Code" class="form-control" id="ZipCode" placeholder="Code postal" required>
+                                        <input type="number" aria-label="Zip Code" class="form-control no-spinners" id="ZipCode" placeholder="Code postal" required>
                                         <label for="ZipCode">Code postal</label>
                                     </div>
                                     <div class="form-floating w-50">
@@ -300,29 +286,119 @@
                                         <label for="City">Ville</label>
                                     </div>
                                 </div>
-                                <div class="form-floating mb-5">
-                                    <input type="tel" aria-label="Tel" class="form-control" id="floatingInputPhone" placeholder="Téléphone" required>
-                                    <label for="floatingInputPhone">Téléphone</label>
+                                <div class="input-group mt-3">
+                                    <div class="form-floating">
+                                        <input type="tel" name="phone" class="form-control" id="Phone" placeholder="Fixe" required>
+                                        <label for="Phone">Fixe</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="tel" aria-label="Mobil" class="form-control" id="Mobil" placeholder="Portable" required>
+                                        <label for="Mobil">Portable</label>
+                                    </div>
                                 </div>
-                                <div class="form-floating mb-1">
-                                    <input type="email" class="form-control" id="floatingInputMail" placeholder="email@email.com" required>
-                                    <label for="floatingInputMail">Adresse mail</label>
+                                <div class="form-floating mt-3">
+                                    <input type="email" class="form-control" id="Mail" placeholder="email@email.com" required>
+                                    <label for="Mail">Adresse mail</label>
+                                </div>
+                                <div class="form-floating mt-3">
+                                    <textarea class="form-control" placeholder="Notes" id="Notes" style="height: 100px"></textarea>
+                                    <label for="Notes">Notes</label>
+                                </div>
+                                <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" type="submit" id="submitAdd">Ajouter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search Contact -->
+        <div class="modal fade" id="modalAddContact" aria-hidden="true" aria-labelledby="modalAddContactLabel" tabindex="-1">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="./assets/images/logo.svg" class="modal-img" id="modalAddContactLabel" alt="Logo de ContactSaver">
+                        <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="w-100 m-auto">
+                            <form id="formAdd">
+                                <h5 class="h3 mb-5 fw-normal">Ajoutez votre contact</h5>
+                                <div class="input-group justify-content-around pb-3">
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-male" id="gender-male" required>
+                                        <i class="bi bi-gender-male fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-female" id="gender-female">
+                                        <i class="bi bi-gender-female fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-neuter" id="gender-neuter">
+                                        <i class="bi bi-gender-neuter fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-ambiguous" id="gender-ambiguous">
+                                        <i class="bi bi-gender-ambiguous fs-4"></i>
+                                    </label>
+                                    <label class="form-check-label d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-trans" id="gender-trans">
+                                        <i class="bi bi-gender-trans fs-4"></i>
+                                    </label>
                                 </div>
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="password" class="form-control inputPasswordSubscribe" id="floatingPasswordSubscribe" placeholder="Mot de passe" required>
-                                        <label for="floatingPasswordSubscribe">Mot de passe</label>
+                                        <input type="text" name="firstname" class="form-control" id="FirstName" placeholder="Nom" required>
+                                        <label for="FirstName">Nom</label>
                                     </div>
-                                    <span class="input-group-text"><i class="bi bi-eye-slash toggleIcon toggleIconSubscribe"></i></span>
-                                </div>
-                                <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="password" class="form-control inputPasswordConfirm" id="floatingPasswordConfirm" placeholder="Confirmez votre mot de passe" required>
-                                        <label for="floatingPasswordConfirm">Confirmez votre mot de passe</label>
+                                        <input type="text" name="lastname" class="form-control" id="LastName" placeholder="Prénom" required>
+                                        <label for="LastName">Prénom</label>
                                     </div>
-                                    <span class="input-group-text"><i class="bi bi-eye-slash toggleIcon toggleIconConfirm"></i></span>
                                 </div>
-                                <button class="btn btn-warning w-100 py-2 text-white submitButton" type="submit">S'inscrire</button>
+                                <div class="form-floating">
+                                    <input type="text" aria-label="Address" class="form-control" id="Address" placeholder="Adresse" required>
+                                    <label for="Address">Adresse</label>
+                                </div>
+                                <div class="input-group">
+                                    <button class="btn btn-outline-primary dropdown-toggle country-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">Pays</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item country-select" data-flag="flag-fr"><div class="flag flag-fr me-2"></div>France</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-de"><div class="flag flag-de me-2"></div>Allemagne</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-us"><div class="flag flag-us me-2"></div>USA</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-england"><div class="flag flag-england me-2"></div>GB</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-es"><div class="flag flag-es me-2"></div>Espagne</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-pt"><div class="flag flag-pt me-2"></div>Portugual</a></li>
+                                        <li><a class="dropdown-item country-select" data-flag="flag-it"><div class="flag flag-it me-2"></div>Italie</a></li>
+                                    </ul>
+                                    <div class="form-floating">
+                                        <input type="number" aria-label="Zip Code" class="form-control no-spinners" id="ZipCode" placeholder="Code postal" required>
+                                        <label for="ZipCode">Code postal</label>
+                                    </div>
+                                    <div class="form-floating w-50">
+                                        <input type="text" aria-label="City" class="form-control" id="City" placeholder="Ville" required>
+                                        <label for="City">Ville</label>
+                                    </div>
+                                </div>
+                                <div class="input-group mt-3">
+                                    <div class="form-floating">
+                                        <input type="tel" name="phone" class="form-control" id="Phone" placeholder="Fixe" required>
+                                        <label for="Phone">Fixe</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="tel" aria-label="Mobil" class="form-control" id="Mobil" placeholder="Portable" required>
+                                        <label for="Mobil">Portable</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating mt-3">
+                                    <input type="email" class="form-control" id="Mail" placeholder="email@email.com" required>
+                                    <label for="Mail">Adresse mail</label>
+                                </div>
+                                <div class="form-floating mt-3">
+                                    <textarea class="form-control" placeholder="Notes" id="Notes" style="height: 100px"></textarea>
+                                    <label for="Notes">Notes</label>
+                                </div>
+                                <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" type="submit" id="submitAdd">Ajouter</button>
                             </form>
                         </div>
                     </div>
@@ -334,6 +410,7 @@
     <!-- IMPORT des scripts -->
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="./assets/js/controller/ContactController.js"></script>
-    <script src="./assets/js/controller/ConnexionController.js"></script>
+    <script src="./assets/js/connexion.js"></script>
+    <script src="./assets/js/countrySelection.js"></script>
 </body>
 </html>

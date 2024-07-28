@@ -5,7 +5,7 @@ let contactList = [];
 let contactListSearched = [];
 
 // Clic sur Ajouter
-document.getElementById('submit').addEventListener('click', (event) => {
+document.getElementById('submitAdd').addEventListener('click', (event) => {
     event.preventDefault();
     const form = document.getElementById('formAdd');
     const data = new FormData(form);
