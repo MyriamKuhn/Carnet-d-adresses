@@ -12,17 +12,8 @@ document.getElementById('submitAdd').addEventListener('click', (event) => {
     const firstname = data.get('firstname');
     const lastname = data.get('lastname');
     const phone = data.get('phone');
-    if(firstname === "") {
-        document.getElementById('alertNoName').classList.remove('visually-hidden');
-        document.getElementById('FirstName').classList.add('is-invalid');
-        setTimeout(() => {
-            document.getElementById('alertNoName').classList.add('visually-hidden');
-            document.getElementById('FirstName').classList.remove('is-invalid');
-        }, 1500);
-    } else {
-        addContactToList(firstname, lastname, phone);
-    }
-});
+    addContactToList(firstname, lastname, phone);
+    });
 
 // Clic sur Rechercher
 document.getElementById('submitSearch').addEventListener('click', (event) => {
