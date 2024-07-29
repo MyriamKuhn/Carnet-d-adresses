@@ -71,11 +71,11 @@
 
     <!-- START : Modals -->
         <!-- Connexion -->
-        <div class="modal fade" id="modalConnexion" aria-hidden="true" aria-labelledby="modalConnexionLabel" tabindex="-1">
+        <div class="modal fade" id="modalConnexion" aria-hidden="true" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <img src="./assets/images/logo.svg" class="modal-img" id="modalPassForgotLabel" alt="Logo de ContactSaver">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -110,11 +110,11 @@
             </div>
         </div>
         <!-- Subscribing -->
-        <div class="modal fade" id="modalSubscribe" aria-hidden="true" aria-labelledby="modalSubscribeLabel" tabindex="-1">
+        <div class="modal fade" id="modalSubscribe" aria-hidden="true" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <img src="./assets/images/logo.svg" class="modal-img" id="modalPassForgotLabel" alt="Logo de ContactSaver">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -185,11 +185,11 @@
             </div>
         </div>
         <!-- Password forget -->
-        <div class="modal fade" id="modalPassForgot" aria-hidden="true" aria-labelledby="modalPassForgotLabel" tabindex="-1">
+        <div class="modal fade" id="modalPassForgot" aria-hidden="true" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <img src="./assets/images/logo.svg" class="modal-img" id="modalPassForgotLabel" alt="Logo de ContactSaver">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -210,21 +210,24 @@
             </div>
         </div>
         <!-- Add Contact -->
-        <div class="modal fade" id="modalAddContact" aria-hidden="true" aria-labelledby="modalAddContactLabel" tabindex="-1">
+        <div class="modal fade" id="modalAddContact" aria-hidden="true" tabindex="-1">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <img src="./assets/images/logo.svg" class="modal-img" id="modalAddContactLabel" alt="Logo de ContactSaver">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="w-100 m-auto">
-                            <form id="formAdd">
-                                <h5 class="h3 mb-5 fw-normal">Ajoutez votre contact</h5>
+                            <form id="formAdd" class="needs-validation">
+                                <h5 class="h3 mb-4 fw-normal">Ajoutez votre contact</h5>
+                                <div id="alertNoName" class="alert alert-danger mb-5 visually-hidden" role="alert">
+                                    Veuillez corriger votre entrée !
+                                </div>
                                 <div class="input-group justify-content-around pb-3">
                                     <label class="form-check-label d-flex align-items-center justify-content-center">
-                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-male" id="gender-male" required>
+                                        <input class="form-check-input my-0 mx-3" type="radio" name="gender-male" id="gender-male">
                                         <i class="bi bi-gender-male fs-4"></i>
                                     </label>
                                     <label class="form-check-label d-flex align-items-center justify-content-center">
@@ -246,16 +249,16 @@
                                 </div>
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="text" name="firstname" class="form-control" id="FirstName" placeholder="Nom" required>
+                                        <input type="text" name="firstname" class="form-control" id="FirstName" placeholder="Nom">
                                         <label for="FirstName">Nom</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="text" name="lastname" class="form-control" id="LastName" placeholder="Prénom" required>
+                                        <input type="text" name="lastname" class="form-control" id="LastName" placeholder="Prénom">
                                         <label for="LastName">Prénom</label>
                                     </div>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="text" aria-label="Address" class="form-control" id="Address" placeholder="Adresse" required>
+                                    <input type="text" aria-label="Address" class="form-control" id="Address" placeholder="Adresse">
                                     <label for="Address">Adresse</label>
                                 </div>
                                 <div class="input-group">
@@ -270,26 +273,26 @@
                                         <li><a class="dropdown-item country-select" data-flag="flag-it"><div class="flag flag-it me-2"></div>Italie</a></li>
                                     </ul>
                                     <div class="form-floating">
-                                        <input type="number" aria-label="Zip Code" class="form-control no-spinners" id="ZipCode" placeholder="Code postal" required>
+                                        <input type="number" aria-label="Zip Code" class="form-control no-spinners" id="ZipCode" placeholder="Code postal">
                                         <label for="ZipCode">Code postal</label>
                                     </div>
                                     <div class="form-floating w-50">
-                                        <input type="text" aria-label="City" class="form-control" id="City" placeholder="Ville" required>
+                                        <input type="text" aria-label="City" class="form-control" id="City" placeholder="Ville">
                                         <label for="City">Ville</label>
                                     </div>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="form-floating">
-                                        <input type="tel" name="phone" class="form-control" id="Phone" placeholder="Fixe" required>
+                                        <input type="tel" name="phone" class="form-control" id="Phone" placeholder="Fixe">
                                         <label for="Phone">Fixe</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="tel" aria-label="Mobil" class="form-control" id="Mobil" placeholder="Portable" required>
+                                        <input type="tel" aria-label="Mobil" class="form-control" id="Mobil" placeholder="Portable">
                                         <label for="Mobil">Portable</label>
                                     </div>
                                 </div>
                                 <div class="form-floating mt-3">
-                                    <input type="email" class="form-control" id="Mail" placeholder="email@email.com" required>
+                                    <input type="email" class="form-control" id="Mail" placeholder="email@email.com">
                                     <label for="Mail">Adresse mail</label>
                                 </div>
                                 <div class="form-floating mt-3">
@@ -304,11 +307,11 @@
             </div>
         </div>
         <!-- Search Contact -->
-        <div class="modal fade" id="modalSearchContact" aria-hidden="true" aria-labelledby="modalSearchContactLabel" tabindex="-1">
+        <div class="modal fade" id="modalSearchContact" aria-hidden="true" tabindex="-1">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <img src="./assets/images/logo.svg" class="modal-img" id="modalAddContactLabel" alt="Logo de ContactSaver">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -317,9 +320,10 @@
                             <form id="formSearch">
                                 <h5 class="h3 mb-5 fw-normal">Recherchez un contact</h5>
                                 <div class="form-floating">
-                                    <input type="text" name="search" class="form-control" id="Search" placeholder="Entrez une partie d'un nom ou d'un prénom" required>
+                                    <input type="text" name="search" class="form-control" id="Search" placeholder="Entrez une partie d'un nom ou d'un prénom">
                                     <label for="Search">Qui recherchez-vous ?</label>
                                 </div>
+                                <h3 class="pt-4 pb-2">Résultats de la recherche</h3>
                                 <table>
                                     <thead>
                                         <tr>
