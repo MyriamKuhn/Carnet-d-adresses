@@ -47,7 +47,46 @@
     <!-- START : Main -->
     <main class="container pt-5 pb-5">
     <h1>MON CARNET D'ADRESSES</h1>
-
+    <div class="card border-primary mb-3 contact-card" style="height: 27rem;">
+        <div class="card-header border-primary fw-bold d-flex justify-content-between align-items-center">
+            <div>
+                <div>Myriammmmmmmmmpprrrrrrrrr</div>
+                <div>Myriammmmmmmmmpprrrrrrrrr</div>
+            </div>
+            <i class="bi bi-gender-female fs-4"></i>
+        </div>
+        <div class="card-body">
+            <div class="d-flex flex-column justify-content-start">
+                <div class="card-text fw-light">8 rue Louis Pasteur 8 rue Louis Pasteur 8 rue Louis Pasteur fretrerfrg rfsfghbxetgbds</div>
+                <div class="d-flex align-items-center mb-3">
+                    <div class="flag flag-fr me-2"></div>
+                    <p class="card-text">57230 Bitche</p>
+                </div>
+                <div class="d-flex">
+                    <div class="card-text pe-1">Fixe :</div>
+                    <a href="tel:0950161410" class="card-text">09 50 16 14 10</a>
+                </div>
+                <div class="d-flex mb-3">
+                    <div class="card-text pe-1">Mobile :</div>
+                    <a href="tel:0682499706" class="card-text">06 82 49 97 06</a>
+                </div>
+                <div class="d-flex mb-4">
+                    <div class="card-text pe-1">EMail :</div>
+                    <a href="mailto:myriam.kuehn@free.fr" class="card-text">myriam.kuehn@free.fr</a>
+                </div>
+                <div class="d-flex flex-column mb-1">
+                    <small class="text-body-secondary">Notes :</small>
+                    <small class="text-body-secondary">Mes notes personnelles. Mes notes personnelles.
+                        Mes notes personnelles. Mes notes personnelles.
+                        Mesf</small>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer border-primary d-flex justify-content-between">
+            <button class="btn btn-warning text-white fw-bold text-uppercase">Modifier</button>
+            <button class="btn btn-warning text-white fw-bold text-uppercase">Supprimer</button>
+        </div>
+    </div>
     <table>
         <thead>
             <tr>
@@ -249,16 +288,16 @@
                                 </div>
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="text" name="firstname" class="form-control" id="FirstName" placeholder="Nom">
+                                        <input type="text" name="firstname" class="form-control" id="FirstName" placeholder="Nom" maxlength="25" required>
                                         <label for="FirstName">Nom</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="text" name="lastname" class="form-control" id="LastName" placeholder="Prénom">
+                                        <input type="text" name="lastname" class="form-control" id="LastName" placeholder="Prénom" maxlength="25">
                                         <label for="LastName">Prénom</label>
                                     </div>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="text" aria-label="Address" class="form-control" id="Address" placeholder="Adresse">
+                                    <input type="text" aria-label="Address" class="form-control" id="Address" placeholder="Adresse" maxlength="85">
                                     <label for="Address">Adresse</label>
                                 </div>
                                 <div class="input-group">
@@ -273,11 +312,11 @@
                                         <li><a class="dropdown-item country-select" data-flag="flag-it"><div class="flag flag-it me-2"></div>Italie</a></li>
                                     </ul>
                                     <div class="form-floating">
-                                        <input type="number" aria-label="Zip Code" class="form-control no-spinners" id="ZipCode" placeholder="Code postal">
+                                        <input type="number" aria-label="Zip Code" class="form-control no-spinners" id="ZipCode" placeholder="Code postal" max="99999">
                                         <label for="ZipCode">Code postal</label>
                                     </div>
-                                    <div class="form-floating w-50">
-                                        <input type="text" aria-label="City" class="form-control" id="City" placeholder="Ville">
+                                    <div class="form-floating">
+                                        <input type="text" aria-label="City" class="form-control" id="City" placeholder="Ville" maxlength="50">
                                         <label for="City">Ville</label>
                                     </div>
                                 </div>
@@ -296,7 +335,7 @@
                                     <label for="Mail">Adresse mail</label>
                                 </div>
                                 <div class="form-floating mt-3">
-                                    <textarea class="form-control" placeholder="Notes" id="Notes" style="height: 100px"></textarea>
+                                    <textarea class="form-control" placeholder="Notes" id="Notes" style="height: 100px" maxlength="100"></textarea>
                                     <label for="Notes">Notes</label>
                                 </div>
                                 <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" type="submit" id="submitAdd">Ajouter</button>
