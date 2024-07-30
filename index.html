@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carnet d'adresses</title>
+    <meta name="description" content="ContactSaver - Organisez et gérez vos contacts facilement avec notre carnet d'adresses en ligne. Accédez à vos informations de contact partout et à tout moment, avec une interface simple et sécurisée.">
+    <title>ContactSaver - Votre carnet d'adresses en ligne</title>
+    <link rel="shortcut icon" href="./assets/images/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/main.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./assets/css/flags.css">
@@ -50,7 +52,7 @@
     
 
 
-    <div class="card border-primary mb-3 contact-card">
+    <div class="card border-primary mb-3 contact-card contact-card-list">
         <div class="card-header border-primary fw-bold d-flex justify-content-between align-items-center">
             <div>
                 <div>Myriammmmmmmmmpprrrrrrrrr</div>
@@ -101,7 +103,7 @@
         </div>
     </div>
 
-    <div class="card border-primary mb-3 contact-card">
+    <div class="card border-primary mb-3 contact-card contact-card-list">
         <div class="card-header border-primary fw-bold d-flex justify-content-between align-items-center">
             <div>
                 <div>Myriammmmmmmmmpprrrrrrrrr</div>
@@ -152,7 +154,7 @@
         </div>
     </div>
 
-    <div class="card border-primary mb-3 contact-card">
+    <div class="card border-primary mb-3 contact-card contact-card-list">
         <div class="card-header border-primary fw-bold d-flex justify-content-between align-items-center">
             <div>
                 <div>Myriammmmmmmmmpprrrrrrrrr</div>
@@ -203,7 +205,7 @@
         </div>
     </div>
 
-    <div class="card border-primary mb-3 contact-card">
+    <div class="card border-primary mb-3 contact-card contact-card-list">
         <div class="card-header border-primary fw-bold d-flex justify-content-between align-items-center">
             <div>
                 <div>Myriammmmmmmmmpprrrrrrrrr</div>
@@ -421,13 +423,13 @@
                     <div class="modal-header">
                         <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="modal-body">
                         <div class="w-100 m-auto">
                             <form id="formAdd" name="formAdd" class="was-validated">
                                 <h5 class="h3 mb-4 fw-normal">Ajoutez votre contact</h5>
-                                <div class="d-flex justify-content-around pb-3" title="Sélectionnez le sexe">
+                                <div class="d-flex justify-content-around pb-3" title="Sélectionnez le sexe" aria-label="Sélectionnez le sexe">
                                     <div class="gender-div">
                                         <input class="btn-check" type="radio" name="gender" id="gender-male" required checked>
                                         <label class="btn btn-outline-primary" for="gender-male"><i class="bi bi-gender-male fs-4"></i></label>
@@ -451,17 +453,17 @@
                                 </div>
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="text" name="firstname" class="form-control" id="firstName" placeholder="Nom" maxlength="25" required>
+                                        <input type="text" name="firstname" class="form-control" id="firstName" maxlength="25" aria-label="Entrez le nom de famille" required>
                                         <label for="firstName">Nom</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="text" name="lastname" class="form-control" id="lastName" placeholder="Prénom" maxlength="25" required>
+                                        <input type="text" name="lastname" class="form-control" id="lastName" maxlength="25" aria-label="Entrez le prénom" required>
                                         <label for="lastName">Prénom</label>
                                     </div>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="text" name="Address" class="form-control" id="Address" placeholder="Adresse" maxlength="85" required>
-                                    <label for="Address">Adresse</label>
+                                    <input type="text" name="address" class="form-control" id="address" maxlength="85" aria-label="Entrez l'adresse" required>
+                                    <label for="address">Adresse</label>
                                 </div>
                                 <div class="input-group">
                                     <button class="btn btn-outline-primary dropdown-toggle country-button" title="Sélectionnez le pays" name="country" type="button" data-bs-toggle="dropdown" aria-expanded="false"><div class="flag flag-fr me-2"></button>
@@ -475,33 +477,33 @@
                                         <li><a class="dropdown-item country-select" data-flag="flag-it"><div class="flag flag-it me-2"></div>Italie</a></li>
                                     </ul>
                                     <div class="form-floating">
-                                        <input type="number" name="Zip Code" class="form-control no-spinners" id="ZipCode" placeholder="Code postal" max="99999" required>
-                                        <label for="ZipCode">Code postal</label>
+                                        <input type="number" name="zipCode" class="form-control no-spinners" id="zipCode" max="99999" aria-label="Entrez le code postal" required>
+                                        <label for="zipCode">Code postal</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="text" name="City" class="form-control" id="City" placeholder="Ville" maxlength="50" required>
-                                        <label for="City">Ville</label>
+                                        <input type="text" name="city" class="form-control" id="city" maxlength="50" aria-label="Entrez le nom de la ville" required>
+                                        <label for="city">Ville</label>
                                     </div>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="form-floating">
-                                        <input type="tel" name="phone" class="form-control" id="Phone" placeholder="Fixe" required>
-                                        <label for="Phone">Fixe</label>
+                                        <input type="number" name="phone" class="form-control no-spinners" id="phone" max="99999999999999999999" aria-label="Entrez le numéro de téléphone" required>
+                                        <label for="phone">Fixe</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="tel" name="Mobil" class="form-control" id="Mobil" placeholder="Portable" required>
-                                        <label for="Mobil">Portable</label>
+                                        <input type="number" name="mobil" class="form-control no-spinners" id="mobil" max="99999999999999999999" aria-label="Entrez le numéro de portable" required>
+                                        <label for="mobil">Portable</label>
                                     </div>
                                 </div>
                                 <div class="form-floating mt-3">
-                                    <input type="email" name="email" class="form-control" id="Mail" placeholder="email@email.com" required>
+                                    <input type="email" name="email" class="form-control" id="Mail" aria-label="Entrez l'adresse mail" required>
                                     <label for="Mail">Adresse mail</label>
                                 </div>
                                 <div class="form-floating mt-3">
-                                    <textarea class="form-control" name="notes" placeholder="Notes" id="Notes" style="height: 100px" maxlength="115"></textarea>
+                                    <textarea class="form-control" name="notes" aria-label="Entrez une note" id="Notes" style="height: 100px" maxlength="115"></textarea>
                                     <label for="Notes">Notes</label>
                                 </div>
-                                <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" type="submit" id="submitAdd">Ajouter</button>
+                                <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" aria-label="Ajouter" type="submit" id="submitAdd">Ajouter</button>
                             </form>
                         </div>
                     </div>
@@ -515,31 +517,22 @@
                     <div class="modal-header">
                         <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="modal-body">
                         <div class="w-100 m-auto">
-                            <form id="formSearch">
+                            <form id="formSearch" class="was-validated">
                                 <h5 class="h3 mb-5 fw-normal">Recherchez un contact</h5>
                                 <div class="form-floating">
-                                    <input type="text" name="search" class="form-control" id="Search" placeholder="Entrez une partie d'un nom ou d'un prénom">
-                                    <label for="Search">Qui recherchez-vous ?</label>
+                                    <input type="text" name="search" class="form-control" id="search" aria-label="Entrez le nom que vous recherchez" required>
+                                    <label for="search">Qui recherchez-vous ?</label>
                                 </div>
-                                <h3 class="pt-4 pb-2">Résultats de la recherche</h3>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Nom</th>
-                                            <th>Prénom</th>
-                                            <th>Numéro de téléphone</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="js-table-search">
-                                        <!-- Emplacement des données -->
-                                    </tbody>
-                                </table>
-                                <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" type="submit" id="submitSearch">Rechercher</button>
+                                <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold search-btn" aria-label="Rechercher" type="submit" id="submitSearch">Rechercher</button>
                             </form>
+                            <h3 class="pt-4 pb-2">Résultats de la recherche</h3>
+                            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 justify-content-around searchDiv">
+                                <!-- Emplacement des cards de recherche -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -549,9 +542,9 @@
 
     <!-- IMPORT des scripts -->
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/formsFuntions.js"></script>
     <script type="module" src="./assets/js/controller/ContactController.js"></script>
     <script src="./assets/js/connexion.js"></script>
     <script src="./assets/js/countrySelection.js"></script>
-    <script src="./assets/js/formsFuntions.js"></script>
 </body>
 </html>

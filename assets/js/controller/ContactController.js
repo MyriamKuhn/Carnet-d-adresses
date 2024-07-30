@@ -7,21 +7,26 @@ let contactListSearched = [];
 // Clic sur Ajouter
 document.getElementById('submitAdd').addEventListener('click', (event) => {
     event.preventDefault();
-    const form = document.getElementById('formAdd');
-    const data = new FormData(form);
+    //const formAdd = document.getElementById('formAdd');
+    const data = new FormData(formAdd);
     const firstname = data.get('firstname');
     const lastname = data.get('lastname');
     const phone = data.get('phone');
-    addContactToList(firstname, lastname, phone);
+        if(formAdd.checkValidity()) {
+            addContactToList(firstname, lastname, phone);
+            formAdd.reset();
+        };
     });
 
 // Clic sur Rechercher
 document.getElementById('submitSearch').addEventListener('click', (event) => {
     event.preventDefault();
-    const form = document.getElementById('formSearch');
-    const data = new FormData(form);
+    //const formSearch = document.getElementById('formSearch');
+    const data = new FormData(formSearch);
     const word = data.get('search');
-    searchContactInList(word);
+        if(formSearch.checkValidity()) {
+            searchContactInList(word);
+        };
 });
 
 // Clic sur supprimer
@@ -46,8 +51,7 @@ const addContactToList = (firstname, lastname, phone) => {
             const fnSearch = fn.toLowerCase();
             const ln = contactList[i].lastname;
             const lnSearch = ln.toLowerCase();
-            const phoneSearch = contactList[i].phone;
-            if (fnSearch === firstname.toLowerCase() && lnSearch === lastname.toLowerCase() && phoneSearch === phone) {
+            if (fnSearch === firstname.toLowerCase() && lnSearch === lastname.toLowerCase()) {
                 alert("Ce contact existe déjà !");
                 isFounded = true;
                 break;
@@ -77,7 +81,8 @@ const searchContactInList = (word) => {
             contactListSearched.push(searchedContact);
         }
     };
-    displayInModal(contactListSearched);
+    createSearchCardHTML(contactListSearched);
+    //displayInModal(contactListSearched);
 };
 
 // Afficher les contacts dans un tableau
