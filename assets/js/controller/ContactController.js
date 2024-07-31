@@ -12,9 +12,12 @@ document.getElementById('submitAdd').addEventListener('click', (event) => {
     const firstname = data.get('firstname');
     const lastname = data.get('lastname');
     const phone = data.get('phone');
-        if(formAdd.checkValidity()) {
+        if(formAdd.checkValidity() && document.querySelector('#cat-family').checked || document.querySelector('#cat-friends').checked || document.querySelector('#cat-work').checked || document.querySelector('#cat-other').checked) {
             addContactToList(firstname, lastname, phone);
             formAdd.reset();
+            document.querySelector('#gender-male').checked = true;
+            document.querySelector('#cat-family').checked = true;
+            document.querySelector('#cat-friends, #cat-work, #cat-other').checked = false;
         };
     });
 

@@ -10,9 +10,20 @@ document.querySelectorAll('.gender-div').forEach(div => {
     });
 });
 
+// Check des checkbox et mise en checked true de l'élément cliqué
+document.querySelectorAll('.category-div').forEach(div => {
+    div.addEventListener('click', () => {
+        console.log(div.firstElementChild.checked)
+        div.firstElementChild.checked = div.firstElementChild.checked ? false : true;
+    });
+});
+
 // Reset le formulaire de la modale pour ajouter un contact
 document.querySelector('#modalAddContact').addEventListener('hidden.bs.modal', () => {
         formAdd.reset();
+        document.querySelector('#gender-male').checked = true;
+        document.querySelector('#cat-family').checked = true;
+        document.querySelector('#cat-friends, #cat-work, #cat-other').checked = false;
     });
 
 // Reset le formulaire de la modale pour rechercher un contact

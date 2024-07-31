@@ -1,6 +1,6 @@
 export class Contact {
     // Définition du constructeur
-    constructor (firstname, lastname, phone) {
+    constructor (firstname, lastname, gender, address, phone, mobile, mail, notes, category) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.gender = gender;
@@ -9,5 +9,6 @@ export class Contact {
         this.mobile = mobile;
         this.mail = mail;
         this.notes = notes;
+        this.category = category;
     };
 };
