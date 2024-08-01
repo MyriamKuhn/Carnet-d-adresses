@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-body-secondary">
     <!-- START : Header -->
     <header class="header">
         <!-- START : Navbar -->
@@ -296,7 +296,7 @@
             </div>
         </div>
         <!-- Add Contact -->
-        <div class="modal fade" id="modalAddContact" aria-hidden="true" tabindex="-1">
+        <div class="modal fade" id="modalAddContact" aria-hidden="true" tabindex="-1" data-bs-backdrop="static">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -411,8 +411,8 @@
             </div>
         </div>
         <!-- Search Contact -->
-        <div class="modal fade" id="modalSearchContact" aria-hidden="true" tabindex="-1">
-            <div class="modal-dialog modal-xl">
+        <div class="modal fade" id="modalSearchContact" aria-hidden="true" tabindex="-1" data-bs-backdrop="static">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
                         <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
@@ -437,6 +437,54 @@
                                 <!-- Emplacement des cards de recherche -->
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Confirm to delete -->
+        <div class="modal fade" tabindex="-1" id="confirmModal" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
+                        <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
+                    </div>
+                    <div class="modal-body d-flex flex-column">
+                        <div class="mb-3">
+                            <div class="text-danger fw-bold">Attention, la suppression sera définitive !</div>
+                            <div>Désirez-vous supprimer ce contact :</div>
+                        </div>
+                        <div class="contactToDelete d-flex justify-content-center">
+                            <!-- Emplacement de la card -->
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-evenly">
+                        <button type="button" name="confirmDeleteBtn" class="btn btn-danger text-uppercase fw-bold" data-bs-dismiss="modal">Oui</button>
+                        <button type="button" class="btn btn-success text-uppercase text-white fw-bold" data-bs-dismiss="modal">Non</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Confirm to delete in Search -->
+        <div class="modal fade" tabindex="-1" id="confirmModalSearch" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
+                        <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
+                    </div>
+                    <div class="modal-body d-flex flex-column">
+                        <div class="mb-3">
+                            <div class="text-danger fw-bold">Attention, la suppression sera définitive !</div>
+                            <div>Désirez-vous supprimer ce contact :</div>
+                        </div>
+                        <div class="contactToDeleteSearch d-flex justify-content-center">
+                            <!-- Emplacement de la card -->
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-evenly">
+                        <button type="button" name="confirmDeleteBtnSearch" class="btn btn-danger text-uppercase fw-bold" data-bs-dismiss="modal">Oui</button>
+                        <button type="button" class="btn btn-success text-uppercase text-white fw-bold" data-bs-dismiss="modal">Non</button>
                     </div>
                 </div>
             </div>

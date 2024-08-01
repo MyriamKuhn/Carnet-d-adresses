@@ -8,6 +8,8 @@ const otherDiv = document.querySelector('#other div');
 const searchBtn = document.querySelector('search-btn');
 const countryButton = document.querySelector('.country-button');
 const countrySelection = document.querySelectorAll('.country-select');
+const confirmContact = document.querySelector('.contactToDelete');
+const confirmContactSearch = document.querySelector('.contactToDeleteSearch');
 
 // Check des radios et mise en checked true de l'élément cliqué
 document.querySelectorAll('.gender-div').forEach(div => {
@@ -47,21 +49,6 @@ document.querySelector('#modalSearchContact').addEventListener('hidden.bs.modal'
 
 // Construction des cards en HTML et tri par ordre alphabétique
 function createCardHTML(list, action) {
-    // Trier la liste par ordre alphabétique Nom, Prénom
-    list.sort(function (a,b) {
-        if(a.lastname < b.lastname) 
-            return -1;
-        if(a.lastname > b.lastname)
-            return 1;
-        return 0;
-    }); 
-    list.sort(function (a,b) {
-        if(a.firstname < b.firstname) 
-            return -1;
-        if(a.firstname > b.firstname)
-            return 1;
-        return 0;
-    }); 
 // Création de la card en fonction de chaque catégorie
     switch (action) {
         case 'add':
@@ -72,6 +59,12 @@ function createCardHTML(list, action) {
             break;
         case 'search':
             searchDiv.innerHTML = '';
+            break;
+        case 'confirmDelete':
+            confirmContact.innerHTML = '';
+            break;
+        case 'confirmDeleteSearch':
+            confirmContactSearch.innerHTML = '';
             break;
     };
 
@@ -84,37 +77,50 @@ function createCardHTML(list, action) {
                         const cardDiv = document.createElement('div');
                         cardDiv.className = 'card border-primary mb-3 p-0 mx-1 contact-card';
                         familyDiv.appendChild(cardDiv);
-                        createRestOfCardHTML(i, cardDiv, list);
+                        createRestOfCardHTML(i, cardDiv, list, action);
                     } else if (categoryList[cat] === 'cat-friends') {
                         const cardDiv = document.createElement('div');
                         cardDiv.className = 'card border-primary mb-3 p-0 mx-1 contact-card';
                         friendsDiv.appendChild(cardDiv);
-                        createRestOfCardHTML(i, cardDiv, list);
+                        createRestOfCardHTML(i, cardDiv, list, action);
                     } else if (categoryList[cat] === 'cat-work') {
                         const cardDiv = document.createElement('div');
                         cardDiv.className = 'card border-primary mb-3 p-0 mx-1 contact-card';
                         workDiv.appendChild(cardDiv);
-                        createRestOfCardHTML(i, cardDiv, list);
+                        createRestOfCardHTML(i, cardDiv, list, action);
                     } else {
                         const cardDiv = document.createElement('div');
                         cardDiv.className = 'card border-primary mb-3 p-0 mx-1 contact-card';
                         otherDiv.appendChild(cardDiv);
-                        createRestOfCardHTML(i, cardDiv, list);
+                        createRestOfCardHTML(i, cardDiv, list, action);
                     };
                 };
                 break;
             case 'search':
+                const cardDiv = document.createElement('div');
                 cardDiv.className = 'card border-primary mb-3 p-0 contact-card';
                 searchDiv.appendChild(cardDiv);
-                createRestOfCardHTML(i, cardDiv, list);
+                createRestOfCardHTML(i, cardDiv, list, action);
+                break;
+            case 'confirmDelete':
+                const cardDiv1 = document.createElement('div');
+                cardDiv1.className = 'card border-primary mb-3 p-0 contact-card';
+                confirmContact.appendChild(cardDiv1);
+                createRestOfCardHTML(i, cardDiv1, list, action);
+                break;
+            case 'confirmDeleteSearch':
+                const cardDiv2 = document.createElement('div');
+                cardDiv2.className = 'card border-primary mb-3 p-0 contact-card';
+                confirmContactSearch.appendChild(cardDiv2);
+                createRestOfCardHTML(i, cardDiv2, list, action);
                 break;
         };       
     };
 };
 // Restant de la fonction de la création de la card pour chaque catégorie
-function createRestOfCardHTML(i, cardDiv, list) {
+function createRestOfCardHTML(i, cardDiv, list, action) {
     const headerDiv = document.createElement('div');
-    headerDiv.className = 'card-header border-primary bg-primary-subtle fw-bold d-flex justify-content-between align-items-center';
+    headerDiv.className = 'card-header border-primary bg-primary-subtle fw-bold d-flex justify-content-between align-items-center text-start';
     cardDiv.appendChild(headerDiv);
 
     const titleDiv = document.createElement('div');
@@ -247,21 +253,39 @@ function createRestOfCardHTML(i, cardDiv, list) {
     noticesDiv.textContent = list[i].notes;
     notesDiv.appendChild(noticesDiv);
 
-    const footerDiv = document.createElement('div');
-    footerDiv.className = 'card-footer border-primary d-flex justify-content-between';
-    cardDiv.appendChild(footerDiv);
+    if (action != 'confirmDelete' && action != 'confirmDeleteSearch') {
+        const footerDiv = document.createElement('div');
+        footerDiv.className = 'card-footer border-primary d-flex justify-content-between';
+        cardDiv.appendChild(footerDiv);
 
-    const modifyBtn = document.createElement('button');
-    modifyBtn.className = 'btn btn-success text-white fw-bold text-uppercase';
-    modifyBtn.id = `modify${i}`
-    modifyBtn.textContent = 'Modifier';
-    footerDiv.appendChild(modifyBtn);
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.className = 'btn btn-danger text-white fw-bold text-uppercase';
-    modifyBtn.id = `delete${i}`
-    deleteBtn.textContent = 'Supprimer';
-    footerDiv.appendChild(deleteBtn);
+        const modifyBtn = document.createElement('button');
+        modifyBtn.className = 'btn btn-success text-white fw-bold text-uppercase';
+        switch (action) {
+            case 'add':
+                modifyBtn.id = `modify${i}`;
+                modifyBtn.name = 'modifyBtnAdd'
+                break;
+            case 'search':
+                modifyBtn.id = `modify${list[i].id}-${i}`;
+                modifyBtn.name = 'modifyBtnSearch'
+                break;
+        };
+        modifyBtn.textContent = 'Modifier';
+        footerDiv.appendChild(modifyBtn);
+    
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn btn-danger text-white fw-bold text-uppercase';
+        switch (action) {
+            case 'add':
+                deleteBtn.id = `delete${i}`;
+                deleteBtn.name = 'deleteBtnAdd'
+                break;
+            case 'search':
+                deleteBtn.id = `delete${list[i].id}-${i}`;
+                deleteBtn.name = 'deleteBtnSearch'
+                break;
+        };
+        deleteBtn.textContent = 'Supprimer';
+        footerDiv.appendChild(deleteBtn);
+    };
 };
-
-// TODO Permettre la recherche par ville avec une liste préremplie de l'existant
