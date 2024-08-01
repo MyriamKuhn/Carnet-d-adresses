@@ -1,7 +1,13 @@
 const formAdd = document.querySelector('#formAdd');
 const formSearch = document.querySelector('#formSearch');
-const searchDiv = document.querySelector('.searchDiv');
+const searchDiv = document.querySelector('.searchDiv'); 
+const familyDiv = document.querySelector('#family div');
+const friendsDiv = document.querySelector('#friends div');
+const workDiv = document.querySelector('#work div');
+const otherDiv = document.querySelector('#other div');
 const searchBtn = document.querySelector('search-btn');
+const countryButton = document.querySelector('.country-button');
+const countrySelection = document.querySelectorAll('.country-select');
 
 // Check des radios et mise en checked true de l'élément cliqué
 document.querySelectorAll('.gender-div').forEach(div => {
@@ -13,8 +19,15 @@ document.querySelectorAll('.gender-div').forEach(div => {
 // Check des checkbox et mise en checked true de l'élément cliqué
 document.querySelectorAll('.category-div').forEach(div => {
     div.addEventListener('click', () => {
-        console.log(div.firstElementChild.checked)
         div.firstElementChild.checked = div.firstElementChild.checked ? false : true;
+    });
+});
+
+// Affichage du pays dans button après sélection dans le menu
+countrySelection.forEach(selection => {
+    selection.addEventListener('click', () => {
+        countryButton.firstChild.className = (`flag ${selection.dataset.flag} me-2`);
+        countryButton.firstChild.dataset.flag = (`${selection.dataset.flag}`);
     });
 });
 
@@ -32,12 +45,74 @@ document.querySelector('#modalSearchContact').addEventListener('hidden.bs.modal'
     searchDiv.innerHTML = "";
 });
 
-// Construction de la card Search en HTML
-function createSearchCardHTML(list) {
-    const cardDiv = document.createElement('div');
-    cardDiv.className = 'card border-primary mb-3 p-0 contact-card contact-card-search';
-    searchDiv.appendChild(cardDiv);
+// Construction des cards en HTML et tri par ordre alphabétique
+function createCardHTML(list, action) {
+    // Trier la liste par ordre alphabétique Nom, Prénom
+    list.sort(function (a,b) {
+        if(a.lastname < b.lastname) 
+            return -1;
+        if(a.lastname > b.lastname)
+            return 1;
+        return 0;
+    }); 
+    list.sort(function (a,b) {
+        if(a.firstname < b.firstname) 
+            return -1;
+        if(a.firstname > b.firstname)
+            return 1;
+        return 0;
+    }); 
+// Création de la card en fonction de chaque catégorie
+    switch (action) {
+        case 'add':
+            familyDiv.innerHTML = '';
+            friendsDiv.innerHTML = '';
+            workDiv.innerHTML = '';
+            otherDiv.innerHTML = '';
+            break;
+        case 'search':
+            searchDiv.innerHTML = '';
+            break;
+    };
 
+    for (let i=0; i < list.length; i++) {
+        switch (action) {
+            case 'add':
+                const categoryList = list[i].category;
+                for (let cat=0; cat<categoryList.length; cat++) {
+                    if (categoryList[cat] === 'cat-family') {
+                        const cardDiv = document.createElement('div');
+                        cardDiv.className = 'card border-primary mb-3 p-0 mx-1 contact-card';
+                        familyDiv.appendChild(cardDiv);
+                        createRestOfCardHTML(i, cardDiv, list);
+                    } else if (categoryList[cat] === 'cat-friends') {
+                        const cardDiv = document.createElement('div');
+                        cardDiv.className = 'card border-primary mb-3 p-0 mx-1 contact-card';
+                        friendsDiv.appendChild(cardDiv);
+                        createRestOfCardHTML(i, cardDiv, list);
+                    } else if (categoryList[cat] === 'cat-work') {
+                        const cardDiv = document.createElement('div');
+                        cardDiv.className = 'card border-primary mb-3 p-0 mx-1 contact-card';
+                        workDiv.appendChild(cardDiv);
+                        createRestOfCardHTML(i, cardDiv, list);
+                    } else {
+                        const cardDiv = document.createElement('div');
+                        cardDiv.className = 'card border-primary mb-3 p-0 mx-1 contact-card';
+                        otherDiv.appendChild(cardDiv);
+                        createRestOfCardHTML(i, cardDiv, list);
+                    };
+                };
+                break;
+            case 'search':
+                cardDiv.className = 'card border-primary mb-3 p-0 contact-card';
+                searchDiv.appendChild(cardDiv);
+                createRestOfCardHTML(i, cardDiv, list);
+                break;
+        };       
+    };
+};
+// Restant de la fonction de la création de la card pour chaque catégorie
+function createRestOfCardHTML(i, cardDiv, list) {
     const headerDiv = document.createElement('div');
     headerDiv.className = 'card-header border-primary bg-primary-subtle fw-bold d-flex justify-content-between align-items-center';
     cardDiv.appendChild(headerDiv);
@@ -46,15 +121,15 @@ function createSearchCardHTML(list) {
     headerDiv.appendChild(titleDiv);
 
     const firstnameDiv = document.createElement('div');
-    firstnameDiv.textContent = list[0].firstname;
+    firstnameDiv.textContent = list[i].firstname;
     titleDiv.appendChild(firstnameDiv);
 
     const lastnameDiv = document.createElement('div');
-    lastnameDiv.textContent = list[0].lastname;
+    lastnameDiv.textContent = list[i].lastname;
     titleDiv.appendChild(lastnameDiv);
 
     const genderSection = document.createElement('i');
-    switch (gender) {
+    switch (list[i].gender) {
         case 'gender-male':
             genderSection.className = 'bi bi-gender-male fs-4';
             break;
@@ -74,7 +149,7 @@ function createSearchCardHTML(list) {
     headerDiv.appendChild(genderSection);
 
     const bodyDiv = document.createElement('div');
-    bodyDiv.className = 'card-body';
+    bodyDiv.className = 'card-body text-start';
     cardDiv.appendChild(bodyDiv);
 
     const flexDiv = document.createElement('div');
@@ -83,7 +158,7 @@ function createSearchCardHTML(list) {
 
     const addressDiv = document.createElement('div');
     addressDiv.className = 'card-text fw-light';
-    addressDiv.textContent = address;
+    addressDiv.textContent = list[i].address;
     flexDiv.appendChild(addressDiv);
 
     const landDiv = document.createElement('div');
@@ -91,17 +166,17 @@ function createSearchCardHTML(list) {
     flexDiv.appendChild(landDiv);
 
     const flagDiv = document.createElement('div');
-    flagDiv.className = `flag ${flag} me-2`;
+    flagDiv.className = `flag ${list[i].flag} me-2`;
     landDiv.appendChild(flagDiv);
 
     const zipDiv = document.createElement('div');
     zipDiv.className = 'card-text pe-1';
-    zipDiv.textContent = zipCode;
+    zipDiv.textContent = list[i].zipCode;
     landDiv.appendChild(zipDiv);
 
     const cityDiv = document.createElement('div');
     cityDiv.className = 'card-text';
-    cityDiv.textContent = city;
+    cityDiv.textContent = list[i].city;
     landDiv.appendChild(cityDiv);
 
     const lineDiv = document.createElement('div');
@@ -118,8 +193,8 @@ function createSearchCardHTML(list) {
 
     const fixeNbDiv = document.createElement('a');
     fixeNbDiv.className = 'card-text';
-    fixeNbDiv.setAttribute('href', `tel:${fixe}`);
-    fixeNbDiv.textContent = fixe;
+    fixeNbDiv.setAttribute('href', `tel:${list[i].phone}`);
+    fixeNbDiv.textContent = list[i].phone;
     phoneDiv.appendChild(fixeNbDiv);
 
     const phoneMobileDiv = document.createElement('div');
@@ -132,8 +207,8 @@ function createSearchCardHTML(list) {
 
     const mobileNbDiv = document.createElement('a');
     mobileNbDiv.className = 'card-text';
-    mobileNbDiv.setAttribute('href', `tel:${mobile}`);
-    mobileNbDiv.textContent = mobile;
+    mobileNbDiv.setAttribute('href', `tel:${list[i].mobile}`);
+    mobileNbDiv.textContent = list[i].mobile;
     phoneMobileDiv.appendChild(mobileNbDiv);
 
     const lineSecDiv = document.createElement('div');
@@ -150,8 +225,8 @@ function createSearchCardHTML(list) {
 
     const amailDiv = document.createElement('a');
     amailDiv.className = 'card-text';
-    amailDiv.setAttribute('href', `mailto:${mail}`);
-    amailDiv.textContent = mail;
+    amailDiv.setAttribute('href', `mailto:${list[i].email}`);
+    amailDiv.textContent = list[i].email;
     mailDiv.appendChild(amailDiv);
 
     const lineTriDiv = document.createElement('div');
@@ -169,6 +244,24 @@ function createSearchCardHTML(list) {
 
     const noticesDiv = document.createElement('small');
     noticesDiv.className = 'text-body-secondary';
+    noticesDiv.textContent = list[i].notes;
     notesDiv.appendChild(noticesDiv);
-    noticesDiv.textContent = notes;
+
+    const footerDiv = document.createElement('div');
+    footerDiv.className = 'card-footer border-primary d-flex justify-content-between';
+    cardDiv.appendChild(footerDiv);
+
+    const modifyBtn = document.createElement('button');
+    modifyBtn.className = 'btn btn-success text-white fw-bold text-uppercase';
+    modifyBtn.id = `modify${i}`
+    modifyBtn.textContent = 'Modifier';
+    footerDiv.appendChild(modifyBtn);
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'btn btn-danger text-white fw-bold text-uppercase';
+    modifyBtn.id = `delete${i}`
+    deleteBtn.textContent = 'Supprimer';
+    footerDiv.appendChild(deleteBtn);
 };
+
+// TODO Permettre la recherche par ville avec une liste préremplie de l'existant

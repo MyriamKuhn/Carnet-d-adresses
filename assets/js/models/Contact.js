@@ -1,14 +1,17 @@
 export class Contact {
     // Définition du constructeur
-    constructor (firstname, lastname, gender, address, phone, mobile, mail, notes, category) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.gender = gender;
-        this.address = address;
-        this.phone = phone;
-        this.mobile = mobile;
-        this.mail = mail;
-        this.notes = notes;
-        this.category = category;
+    constructor (datas,id) {
+        this.firstname = datas.firstname;
+        this.lastname = datas.lastname;
+        this.gender = datas.gender;
+        this.address = datas.address;
+        this.zipCode = datas.zipCode;
+        this.city = datas.city;
+        this.flag = datas.flag;
+        this.phone = datas.phone;
+        this.mobile = datas.mobile;
+        this.email = datas.email;
+        this.notes = datas.notes;
+        this.category = datas.category;
     };
 };
