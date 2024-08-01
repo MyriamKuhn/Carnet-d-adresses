@@ -9,7 +9,6 @@ const searchBtn = document.querySelector('search-btn');
 const countryButton = document.querySelector('.country-button');
 const countrySelection = document.querySelectorAll('.country-select');
 const confirmContact = document.querySelector('.contactToDelete');
-const confirmContactSearch = document.querySelector('.contactToDeleteSearch');
 
 // Check des radios et mise en checked true de l'élément cliqué
 document.querySelectorAll('.gender-div').forEach(div => {
@@ -63,9 +62,6 @@ function createCardHTML(list, action) {
         case 'confirmDelete':
             confirmContact.innerHTML = '';
             break;
-        case 'confirmDeleteSearch':
-            confirmContactSearch.innerHTML = '';
-            break;
     };
 
     for (let i=0; i < list.length; i++) {
@@ -107,12 +103,6 @@ function createCardHTML(list, action) {
                 cardDiv1.className = 'card border-primary mb-3 p-0 contact-card';
                 confirmContact.appendChild(cardDiv1);
                 createRestOfCardHTML(i, cardDiv1, list, action);
-                break;
-            case 'confirmDeleteSearch':
-                const cardDiv2 = document.createElement('div');
-                cardDiv2.className = 'card border-primary mb-3 p-0 contact-card';
-                confirmContactSearch.appendChild(cardDiv2);
-                createRestOfCardHTML(i, cardDiv2, list, action);
                 break;
         };       
     };
@@ -253,7 +243,7 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
     noticesDiv.textContent = list[i].notes;
     notesDiv.appendChild(noticesDiv);
 
-    if (action != 'confirmDelete' && action != 'confirmDeleteSearch') {
+    if (action != 'confirmDelete') {
         const footerDiv = document.createElement('div');
         footerDiv.className = 'card-footer border-primary d-flex justify-content-between';
         cardDiv.appendChild(footerDiv);
@@ -263,11 +253,11 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
         switch (action) {
             case 'add':
                 modifyBtn.id = `modify${i}`;
-                modifyBtn.name = 'modifyBtnAdd'
+                modifyBtn.name = 'modifyBtnAdd';
                 break;
             case 'search':
                 modifyBtn.id = `modify${list[i].id}-${i}`;
-                modifyBtn.name = 'modifyBtnSearch'
+                modifyBtn.name = 'modifyBtnSearch';
                 break;
         };
         modifyBtn.textContent = 'Modifier';
@@ -277,14 +267,13 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
         deleteBtn.className = 'btn btn-danger text-white fw-bold text-uppercase';
         switch (action) {
             case 'add':
-                deleteBtn.id = `delete${i}`;
-                deleteBtn.name = 'deleteBtnAdd'
+                deleteBtn.id = `delete-${i}`;
                 break;
             case 'search':
-                deleteBtn.id = `delete${list[i].id}-${i}`;
-                deleteBtn.name = 'deleteBtnSearch'
+                deleteBtn.id = `delete-${list[i].id}-${i}`;
                 break;
         };
+        deleteBtn.name = 'deleteBtn';
         deleteBtn.textContent = 'Supprimer';
         footerDiv.appendChild(deleteBtn);
     };

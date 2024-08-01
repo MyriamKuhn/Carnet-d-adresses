@@ -424,6 +424,8 @@ let contactList = [
     },
 ];
 let contactListSearched = [];
+let idToDelete;
+let idToDeleteInSearch;
 
 // Chargement de la liste des contacts au démarrage
 if(contactList != []) {
@@ -572,15 +574,17 @@ document.getElementById('submitSearch').addEventListener('click', (event) => {
         };
 });
 
-let idToDelete;
-let idToDeleteInSearch;
 // Clic sur supprimer ou modifier dans la liste et dans la recherche
 document.addEventListener('click', (event) => {
     event.preventDefault();
     switch (event.target.name) {
-        case 'deleteBtnAdd':
-            const targetId = event.target.id.split('');
-            idToDelete = targetId[6];
+        case 'deleteBtn':
+            const targetId = event.target.id.split('-');
+            idToDelete = targetId[1];
+            if(document.querySelector('.searchDiv .contact-card') != null) {
+                const searchTargetId = event.target.id.split('-');
+                idToDeleteInSearch = searchTargetId[2];
+            };
             const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
             confirmModal.show();
             const deletedContactList = [];
@@ -592,27 +596,12 @@ document.addEventListener('click', (event) => {
             removedList = contactList.splice(idToDelete,1);
             sortTheLists(contactList);
             createCardHTML(contactList, 'add');
-            break;
-        case 'deleteBtnSearch':
-            const targetIdSearch = event.target.id.split('');
-            idToDelete = targetIdSearch[6];
-            const searchTargetId = event.target.id.split('-');
-            idToDeleteInSearch = searchTargetId[1];
-            const confirmModalSearch = new bootstrap.Modal(document.getElementById('confirmModalSearch'));
-            confirmModalSearch.show();
-            const deletedContactListSearch = [];
-            deletedContactListSearch.push(contactList[idToDelete]);
-            createCardHTML(deletedContactListSearch, 'confirmDeleteSearch');
-            break;
-        case 'confirmDeleteBtnSearch':
-            let removedListSearch = contactList;
-            removedListSearch = contactList.splice(idToDelete,1);
-            sortTheLists(contactList);
-            createCardHTML(contactList, 'add');
-            let removedSearchList = contactListSearched;
-            removedSearchList = contactListSearched.splice(idToDeleteInSearch,1);
-            sortTheLists(contactListSearched);
-            createCardHTML(contactListSearched, 'search');
+            if(document.querySelector('.searchDiv .contact-card') != null) {
+                let removedSearchList = contactListSearched;
+                removedSearchList = contactListSearched.splice(idToDeleteInSearch,1);
+                sortTheLists(contactListSearched);
+                createCardHTML(contactListSearched, 'search');
+            };
             break;
     };
 });
