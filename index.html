@@ -99,18 +99,18 @@
         </div>
 
         <!-- Back To Top -->
-        <a class="btn btn-primary" href="#home" id="scrollTopButton" name="scrollTopButton">
+        <a class="btn btn-primary" href="#home" id="scrollTopButton" data-name="scrollTopButton">
             <i class="bi bi-chevron-up text-white"></i>
         </a>
 
         <!-- Toast for the Cookies -->
-        <div class="toast show z-3 position-fixed top-0 start-50 translate-middle-x bg-primary" role="alert" aria-live="Alerte cookies" aria-atomic="true" data-autohide="false">
+        <div class="toast show z-3 position-fixed top-0 start-50 translate-middle-x bg-primary" role="alert" aria-atomic="true" data-autohide="false">
             <div class="toast-header justify-content-between">
                 <div class="d-flex">
                     <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                     <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fermer"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
                 <p class="fw-bold">Ce site web utilise des cookies.</p>
@@ -267,12 +267,12 @@
                                         <label for="floatingInputName">Nom</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="text" aria-label="Last name" class="form-control" id="floatingInputLastName" placeholder="Prénom" required>
+                                        <input type="text" aria-label="Lastname" class="form-control" id="floatingInputLastName" placeholder="Prénom" required>
                                         <label for="floatingInputLastName">Prénom</label>
                                     </div>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="text" aria-label="Adress" class="form-control" id="floatingInputAdress" placeholder="Adresse" required>
+                                    <input type="text" aria-label="Address" class="form-control" id="floatingInputAdress" placeholder="Adresse" required>
                                     <label for="floatingInputAdress">Adresse</label>
                                 </div>
                                 <div class="input-group">
@@ -346,68 +346,68 @@
                     <div class="modal-header">
                         <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="w-100 m-auto">
                             <form id="formAdd" name="formAdd" class="was-validated">
                                 <h5 class="h3 mb-4 fw-normal">Ajoutez votre contact</h5>
-                                <div class="d-flex justify-content-around pb-5" title="Choisissez la catégorie" aria-label="Choisissez la catégorie">
+                                <div class="d-flex justify-content-around pb-5" title="Catégorie">
                                     <div class="category-div">
-                                        <input type="checkbox" class="btn-check" id="cat-family" name="category" aria-label="Ma famille" required checked>
+                                        <input type="checkbox" class="btn-check" id="cat-family" name="category" aria-label="Family" required checked>
                                         <label class="btn text-primary text-uppercase" for="cat-family">Ma famille</label>
                                     </div>
                                     <div class="category-div">
-                                        <input type="checkbox" class="btn-check" id="cat-friends" name="category" aria-label="Mes amis">
+                                        <input type="checkbox" class="btn-check" id="cat-friends" name="category" aria-label="Friends">
                                         <label class="btn text-primary text-uppercase" for="cat-friends">Mes amis</label>
                                     </div>
                                     <div class="category-div">
-                                        <input type="checkbox" class="btn-check" id="cat-work" name="category" aria-label="Travail">
+                                        <input type="checkbox" class="btn-check" id="cat-work" name="category" aria-label="Work">
                                         <label class="btn text-primary text-uppercase" for="cat-work">Travail</label>
                                     </div>
                                     <div class="category-div">
-                                        <input type="checkbox" class="btn-check" id="cat-other" name="category" aria-label="Autres">
+                                        <input type="checkbox" class="btn-check" id="cat-other" name="category" aria-label="Other">
                                         <label class="btn text-primary text-uppercase" for="cat-other">Autres</label>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-around pb-3" title="Sélectionnez le sexe" aria-label="Sélectionnez le sexe">
+                                <div class="d-flex justify-content-around pb-3" title="Sexe">
                                     <div class="gender-div">
-                                        <input class="btn-check" type="radio" name="gender" id="gender-male" aria-label="Masculin" required checked>
+                                        <input class="btn-check" type="radio" name="gender" id="gender-male" aria-label="Male" required checked>
                                         <label class="btn btn-outline-primary" for="gender-male"><i class="bi bi-gender-male fs-4"></i></label>
                                     </div>
                                     <div class="gender-div">
-                                        <input class="btn-check" type="radio" name="gender" id="gender-female" aria-label="Féminin">
+                                        <input class="btn-check" type="radio" name="gender" id="gender-female" aria-label="Female">
                                         <label class="btn btn-outline-primary" for="gender-female"><i class="bi bi-gender-female fs-4"></i></label>
                                     </div>
                                     <div class="gender-div">
-                                        <input class="btn-check" type="radio" name="gender" id="gender-neuter" aria-label="Neutre">
+                                        <input class="btn-check" type="radio" name="gender" id="gender-neuter" aria-label="Neuter">
                                         <label class="btn btn-outline-primary" for="gender-neuter"><i class="bi bi-gender-neuter fs-4"></i></label>        
                                     </div>
                                     <div class="gender-div">
-                                        <input class="btn-check" type="radio" name="gender" id="gender-ambiguous" aria-label="Ambigue">
+                                        <input class="btn-check" type="radio" name="gender" id="gender-ambiguous" aria-label="Ambiguous">
                                         <label class="btn btn-outline-primary" for="gender-ambiguous"><i class="bi bi-gender-ambiguous fs-4"></i></label>
                                     </div>
                                     <div class="gender-div">
-                                        <input class="btn-check" type="radio" name="gender" id="gender-trans" aria-label="Transgenre">
+                                        <input class="btn-check" type="radio" name="gender" id="gender-trans" aria-label="Trans">
                                         <label class="btn btn-outline-primary" for="gender-trans"><i class="bi bi-gender-trans fs-4"></i></label>
                                     </div>
                                 </div>
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="text" name="firstname" class="form-control" id="firstName" maxlength="25" aria-label="Entrez le nom de famille" required>
+                                        <input type="text" name="firstname" class="form-control" id="firstName" maxlength="25" aria-label="Lastname" required>
                                         <label for="firstName">Nom</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="text" name="lastname" class="form-control" id="lastName" maxlength="25" aria-label="Entrez le prénom" required>
+                                        <input type="text" name="lastname" class="form-control" id="lastName" maxlength="25" aria-label="FirstName" required>
                                         <label for="lastName">Prénom</label>
                                     </div>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="text" name="address" class="form-control" id="address" maxlength="85" aria-label="Entrez l'adresse" required>
+                                    <input type="text" name="address" class="form-control" id="address" maxlength="85" aria-label="Address" required>
                                     <label for="address">Adresse</label>
                                 </div>
                                 <div class="input-group">
-                                    <button class="btn btn-outline-primary dropdown-toggle country-button" title="Sélectionnez le pays" name="country" type="button" data-bs-toggle="dropdown" aria-expanded="false"><div class="flag flag-fr me-2" data-flag="flag-fr"></button>
+                                    <button class="btn btn-outline-primary dropdown-toggle country-button" title="Sélectionnez le pays" name="country" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="flag flag-fr me-2 py-auto" data-flag="flag-fr"></i></button>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item country-select" data-flag="flag-fr"><div class="flag flag-fr me-2"></div>France</a></li>
                                         <li><a class="dropdown-item country-select" data-flag="flag-de"><div class="flag flag-de me-2"></div>Allemagne</a></li>
@@ -418,7 +418,7 @@
                                         <li><a class="dropdown-item country-select" data-flag="flag-it"><div class="flag flag-it me-2"></div>Italie</a></li>
                                     </ul>
                                     <div class="form-floating">
-                                        <input type="number" name="zipCode" class="form-control no-spinners" id="zipCode" max="99999" aria-label="Entrez le code postal" required>
+                                        <input type="number" name="zipCode" class="form-control no-spinners" id="zipCode" max="99999" aria-label="Zip Code" required>
                                         <label for="zipCode">Code postal</label>
                                     </div>
                                     <div class="form-floating">
@@ -428,16 +428,16 @@
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="form-floating">
-                                        <input type="number" name="phone" class="form-control no-spinners" id="phone" max="99999999999999999999" aria-label="Entrez le numéro de téléphone" required>
+                                        <input type="number" name="phone" class="form-control no-spinners" id="phone" max="99999999999999999999" aria-label="Tel" required>
                                         <label for="phone">Fixe</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="number" name="mobile" class="form-control no-spinners" id="mobile" max="99999999999999999999" aria-label="Entrez le numéro de portable" required>
+                                        <input type="number" name="mobile" class="form-control no-spinners" id="mobile" max="99999999999999999999" aria-label="Mobile" required>
                                         <label for="mobile">Portable</label>
                                     </div>
                                 </div>
                                 <div class="form-floating mt-3">
-                                    <input type="email" name="email" class="form-control" id="mail" aria-label="Entrez l'adresse mail" required>
+                                    <input type="email" name="email" class="form-control" id="mail" aria-label="Mail" required>
                                     <label for="mail">Adresse mail</label>
                                 </div>
                                 <div class="form-floating mt-3">
@@ -446,7 +446,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" aria-label="Ajouter" type="submit" id="submitAdd">Ajouter</button>
-                                    <button type="button" class="btn btn-danger w-25 py-2 text-white mt-4 text-uppercase fw-bold ms-5" data-bs-dismiss="modal" aria-label="Fermer">Fermer</button>
+                                    <button type="button" class="btn btn-danger w-25 py-2 text-white mt-4 text-uppercase fw-bold ms-5" data-bs-dismiss="modal" aria-label="Close">Fermer</button>
                                 </div>
                             </form>
                         </div>
@@ -461,19 +461,19 @@
                     <div class="modal-header">
                         <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="w-100 m-auto">
                             <form id="formSearch" class="was-validated">
                                 <h5 class="h3 mb-5 fw-normal">Recherchez un contact</h5>
                                 <div class="form-floating">
-                                    <input type="text" name="search" class="form-control" id="search" aria-label="Entrez le nom que vous recherchez" required>
+                                    <input type="text" name="search" class="form-control" id="search" aria-label="Searched Name" required>
                                     <label for="search">Qui recherchez-vous ?</label>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <button class="btn btn-warning w-75 py-2 text-white mt-4 text-uppercase fw-bold search-btn" aria-label="Rechercher" type="submit" id="submitSearch">Rechercher</button>
-                                    <button type="button" class="btn btn-danger w-25 py-2 text-white mt-4 text-uppercase fw-bold ms-5" aria-label="Fermer" data-bs-dismiss="modal">Fermer</button>
+                                    <button class="btn btn-warning w-75 py-2 text-white mt-4 text-uppercase fw-bold search-btn" aria-label="Search" type="submit" id="submitSearch">Rechercher</button>
+                                    <button type="button" class="btn btn-danger w-25 py-2 text-white mt-4 text-uppercase fw-bold ms-5" aria-label="Close" data-bs-dismiss="modal">Fermer</button>
                                 </div>
                             </form>
                             <h3 class="pt-4 pb-2">Résultats de la recherche</h3>
@@ -503,8 +503,8 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-evenly">
-                        <button type="button" aria-label="Oui" name="confirmDeleteBtn" class="btn btn-danger text-uppercase fw-bold" data-bs-dismiss="modal">Oui</button>
-                        <button type="button" aria-label="Non" class="btn btn-success text-uppercase text-white fw-bold" data-bs-dismiss="modal">Non</button>
+                        <button type="button" aria-label="Yes" data-name="confirmDeleteBtn" class="btn btn-danger text-uppercase fw-bold" data-bs-dismiss="modal">Oui</button>
+                        <button type="button" aria-label="No" class="btn btn-success text-uppercase text-white fw-bold" data-bs-dismiss="modal">Non</button>
                     </div>
                 </div>
             </div>
@@ -516,68 +516,68 @@
                     <div class="modal-header">
                         <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="w-100 m-auto">
                             <form id="modifyAdd" name="modifyAdd" class="was-validated">
                                 <h5 class="h3 mb-4 fw-normal">Ajoutez votre contact</h5>
-                                <div class="d-flex justify-content-around pb-5" title="Choisissez la catégorie" aria-label="Choisissez la catégorie">
+                                <div class="d-flex justify-content-around pb-5" title="Catégorie">
                                     <div class="category-div">
-                                        <input type="checkbox" class="btn-check" id="cat-family-modify" name="category-modify" aria-label="Ma famille" required>
+                                        <input type="checkbox" class="btn-check" id="cat-family-modify" name="category-modify" aria-label="Family" required>
                                         <label class="btn text-primary text-uppercase" for="cat-family-modify">Ma famille</label>
                                     </div>
                                     <div class="category-div">
-                                        <input type="checkbox" class="btn-check" id="cat-friends-modify" name="category-modify" aria-label="Mes amis">
+                                        <input type="checkbox" class="btn-check" id="cat-friends-modify" name="category-modify" aria-label="Friends">
                                         <label class="btn text-primary text-uppercase" for="cat-friends-modify">Mes amis</label>
                                     </div>
                                     <div class="category-div">
-                                        <input type="checkbox" class="btn-check" id="cat-work-modify" name="category-modify" aria-label="Travail">
+                                        <input type="checkbox" class="btn-check" id="cat-work-modify" name="category-modify" aria-label="Work">
                                         <label class="btn text-primary text-uppercase" for="cat-work-modify">Travail</label>
                                     </div>
                                     <div class="category-div">
-                                        <input type="checkbox" class="btn-check" id="cat-other-modify" name="category-modify" aria-label="Autres">
+                                        <input type="checkbox" class="btn-check" id="cat-other-modify" name="category-modify" aria-label="Other">
                                         <label class="btn text-primary text-uppercase" for="cat-other-modify">Autres</label>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-around pb-3" title="Sélectionnez le sexe" aria-label="Sélectionnez le sexe">
+                                <div class="d-flex justify-content-around pb-3" title="Sexe">
                                     <div class="gender-div">
-                                        <input class="btn-check" type="radio" name="gender-modify" id="gender-male-modify" aria-label="Masculin" required>
+                                        <input class="btn-check" type="radio" name="gender-modify" id="gender-male-modify" aria-label="Male" required>
                                         <label class="btn btn-outline-primary" for="gender-male-modify"><i class="bi bi-gender-male fs-4"></i></label>
                                     </div>
                                     <div class="gender-div">
-                                        <input class="btn-check" type="radio" name="gender-modify" id="gender-female-modify" aria-label="Féminin">
+                                        <input class="btn-check" type="radio" name="gender-modify" id="gender-female-modify" aria-label="Female">
                                         <label class="btn btn-outline-primary" for="gender-female-modify"><i class="bi bi-gender-female fs-4"></i></label>
                                     </div>
                                     <div class="gender-div">
-                                        <input class="btn-check" type="radio" name="gender-modify" id="gender-neuter-modify" aria-label="Neutre">
+                                        <input class="btn-check" type="radio" name="gender-modify" id="gender-neuter-modify" aria-label="Neuter">
                                         <label class="btn btn-outline-primary" for="gender-neuter-modify"><i class="bi bi-gender-neuter fs-4"></i></label>        
                                     </div>
                                     <div class="gender-div">
-                                        <input class="btn-check" type="radio" name="gender-modify" id="gender-ambiguous-modify" aria-label="Ambigue">
+                                        <input class="btn-check" type="radio" name="gender-modify" id="gender-ambiguous-modify" aria-label="Ambiguous">
                                         <label class="btn btn-outline-primary" for="gender-ambiguous-modify"><i class="bi bi-gender-ambiguous fs-4"></i></label>
                                     </div>
                                     <div class="gender-div">
-                                        <input class="btn-check" type="radio" name="gender-modify" id="gender-trans-modify" aria-label="Transgenre">
+                                        <input class="btn-check" type="radio" name="gender-modify" id="gender-trans-modify" aria-label="Trans">
                                         <label class="btn btn-outline-primary" for="gender-trans-modify"><i class="bi bi-gender-trans fs-4"></i></label>
                                     </div>
                                 </div>
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="text" name="firstname" class="form-control" id="firstName-modify" maxlength="25" aria-label="Entrez le nom de famille" required>
+                                        <input type="text" name="firstname" class="form-control" id="firstName-modify" maxlength="25" aria-label="Firstname" required>
                                         <label for="firstName-modify">Nom</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="text" name="lastname" class="form-control" id="lastName-modify" maxlength="25" aria-label="Entrez le prénom" required>
+                                        <input type="text" name="lastname" class="form-control" id="lastName-modify" maxlength="25" aria-label="Lastname" required>
                                         <label for="lastName-modify">Prénom</label>
                                     </div>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="text" name="address" class="form-control" id="address-modify" maxlength="85" aria-label="Entrez l'adresse" required>
+                                    <input type="text" name="address" class="form-control" id="address-modify" maxlength="85" aria-label="Address" required>
                                     <label for="address-modify">Adresse</label>
                                 </div>
                                 <div class="input-group">
-                                    <button class="btn btn-outline-primary dropdown-toggle country-button-modify" title="Sélectionnez le pays" name="country-modify" type="button" data-bs-toggle="dropdown" aria-expanded="false"><div class="flag flag-fr me-2" data-flag="flag-fr"></button>
+                                    <button class="btn btn-outline-primary dropdown-toggle country-button-modify" title="Sélectionnez le pays" name="country-modify" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="flag flag-fr me-2 py-auto" data-flag="flag-fr"></i></button>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item country-select" data-flag="flag-fr"><div class="flag flag-fr me-2"></div>France</a></li>
                                         <li><a class="dropdown-item country-select" data-flag="flag-de"><div class="flag flag-de me-2"></div>Allemagne</a></li>
@@ -598,25 +598,25 @@
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="form-floating">
-                                        <input type="number" name="phone" class="form-control no-spinners" id="phone-modify" max="99999999999999999999" aria-label="Entrez le numéro de téléphone" required>
+                                        <input type="number" name="phone" class="form-control no-spinners" id="phone-modify" max="99999999999999999999" aria-label="Tel" required>
                                         <label for="phone-modify">Fixe</label>
                                     </div>
                                     <div class="form-floating">
-                                        <input type="number" name="mobile" class="form-control no-spinners" id="mobile-modify" max="99999999999999999999" aria-label="Entrez le numéro de portable" required>
+                                        <input type="number" name="mobile" class="form-control no-spinners" id="mobile-modify" max="99999999999999999999" aria-label="Mobile" required>
                                         <label for="mobile-modify">Portable</label>
                                     </div>
                                 </div>
                                 <div class="form-floating mt-3">
-                                    <input type="email" name="email" class="form-control" id="mail-modify" aria-label="Entrez l'adresse mail" required>
+                                    <input type="email" name="email" class="form-control" id="mail-modify" aria-label="Mail" required>
                                     <label for="mail-modify">Adresse mail</label>
                                 </div>
                                 <div class="form-floating mt-3">
-                                    <textarea class="form-control" name="notes" aria-label="Entrez une note" id="notes-modify" style="height: 100px" maxlength="115"></textarea>
+                                    <textarea class="form-control" name="notes" aria-label="Note" id="notes-modify" style="height: 100px" maxlength="115"></textarea>
                                     <label for="notes-modify">Notes</label>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" aria-label="Modifier" type="submit" id="submitModify" data-bs-dismiss="modal" name="confirmModifyBtn">Modifier</button>
-                                    <button type="button" class="btn btn-danger w-25 py-2 text-white mt-4 text-uppercase fw-bold ms-5" data-bs-dismiss="modal" aria-label="Annuler">Annuler</button>
+                                    <button class="btn btn-warning w-100 py-2 text-white mt-4 text-uppercase fw-bold" aria-label="Modify" type="submit" id="submitModify" data-bs-dismiss="modal" data-name="confirmModifyBtn">Modifier</button>
+                                    <button type="button" class="btn btn-danger w-25 py-2 text-white mt-4 text-uppercase fw-bold ms-5" data-bs-dismiss="modal" aria-label="Cancel">Annuler</button>
                                 </div>
                             </form>
                         </div>
@@ -631,7 +631,7 @@
                     <div class="modal-header">
                         <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
                         <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <p>Le contact que vous désirez créer existe déjà !</p>
