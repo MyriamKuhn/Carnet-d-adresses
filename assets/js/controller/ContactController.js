@@ -521,9 +521,9 @@ const getDatasFromForm = (form) => {
     // Récupération des données du pays
     let flag;
     if (form === formAdd) {
-        flag = document.querySelector('[name="country"] div').dataset.flag;
+        flag = document.querySelector('[name="country"] i').dataset.flag;
     } else {
-        flag = document.querySelector('[name="country-modify"] div').dataset.flag;
+        flag = document.querySelector('[name="country-modify"] i').dataset.flag;
     };
     
     if (form === formAdd) {
@@ -625,7 +625,7 @@ document.getElementById('submitSearch').addEventListener('click', (event) => {
 // Clic sur supprimer ou modifier dans la liste et dans la recherche
 document.addEventListener('click', (event) => {
     event.preventDefault();
-    switch (event.target.name) {
+    switch (event.target.dataset.name) {
         case 'deleteBtn':
             const targetId = event.target.id.split('-');
             idToDelete = targetId[1];
@@ -655,6 +655,7 @@ document.addEventListener('click', (event) => {
             const modifyTargetId = event.target.id.split('-');
             idToModify = modifyTargetId[1];
             contactToModify = contactList[idToModify];
+            console.log(contactToModify)
             if(document.querySelector('.searchDiv .contact-card') != null) {
                 const searchModifyTargetId = event.target.id.split('-');
                 idToModifyInSearch = searchModifyTargetId[2];
@@ -670,6 +671,7 @@ document.addEventListener('click', (event) => {
             createCardHTML(contactList, 'add');
             if(document.querySelector('.searchDiv .contact-card') != null) {
                 contactListSearched[idToModifyInSearch] = modifiedDatas;
+                contactListSearched[idToModifyInSearch].id = idToModify;
                 sortTheLists(contactListSearched);
                 createCardHTML(contactListSearched, 'search');
             };
@@ -701,8 +703,8 @@ function addValuesToForm () {
 
     document.querySelector(`#${contactToModify.gender}-modify`).checked = true;
 
-    document.querySelector('[name="country-modify"] div').className = `flag ${contactToModify.flag} me-2`;
-    document.querySelector('[name="country-modify"] div').dataset.flag = (`${contactToModify.flag}`);
+    document.querySelector('[name="country-modify"] i').className = `flag ${contactToModify.flag} me-2`;
+    document.querySelector('[name="country-modify"] i').dataset.flag = (`${contactToModify.flag}`);
 
     contactToModify.category.forEach(category => {
         document.querySelector(`#${category}-modify`).checked = true;

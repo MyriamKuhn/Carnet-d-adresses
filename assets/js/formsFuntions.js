@@ -194,7 +194,7 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
     const fixeNbDiv = document.createElement('a');
     fixeNbDiv.className = 'card-text mailto';
     fixeNbDiv.setAttribute('href', `tel:${list[i].phone}`);
-    fixeNbDiv.name = 'phoneNb';
+    fixeNbDiv.dataset.name = 'phoneNb';
     fixeNbDiv.textContent = list[i].phone;
     phoneDiv.appendChild(fixeNbDiv);
 
@@ -209,7 +209,7 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
     const mobileNbDiv = document.createElement('a');
     mobileNbDiv.className = 'card-text';
     mobileNbDiv.setAttribute('href', `tel:${list[i].mobile}`);
-    mobileNbDiv.name = 'mobileNb';
+    mobileNbDiv.dataset.name = 'mobileNb';
     mobileNbDiv.textContent = list[i].mobile;
     phoneMobileDiv.appendChild(mobileNbDiv);
 
@@ -228,7 +228,7 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
     const amailDiv = document.createElement('a');
     amailDiv.className = 'card-text';
     amailDiv.setAttribute('href', `mailto:${list[i].email}`);
-    amailDiv.name = 'mailto';
+    amailDiv.dataset.name = 'mailto';
     amailDiv.textContent = list[i].email;
     mailDiv.appendChild(amailDiv);
 
@@ -265,7 +265,7 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
                 modifyBtn.id = `modify-${list[i].id}-${i}`;
                 break;
             };
-        modifyBtn.name = 'modifyBtn';
+        modifyBtn.dataset.name = 'modifyBtn';
         modifyBtn.textContent = 'Modifier';
         footerDiv.appendChild(modifyBtn);
     
@@ -279,7 +279,7 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
                 deleteBtn.id = `delete-${list[i].id}-${i}`;
                 break;
         };
-        deleteBtn.name = 'deleteBtn';
+        deleteBtn.dataset.name = 'deleteBtn';
         deleteBtn.textContent = 'Supprimer';
         footerDiv.appendChild(deleteBtn);
     };
