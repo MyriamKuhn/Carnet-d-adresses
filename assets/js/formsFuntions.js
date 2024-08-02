@@ -1,4 +1,5 @@
 const formAdd = document.querySelector('#formAdd');
+const modifyAdd = document.querySelector('#modifyAdd');
 const formSearch = document.querySelector('#formSearch');
 const searchDiv = document.querySelector('.searchDiv'); 
 const familyDiv = document.querySelector('#family div');
@@ -7,6 +8,7 @@ const workDiv = document.querySelector('#work div');
 const otherDiv = document.querySelector('#other div');
 const searchBtn = document.querySelector('search-btn');
 const countryButton = document.querySelector('.country-button');
+const countryButtonModify = document.querySelector('.country-button-modify');
 const countrySelection = document.querySelectorAll('.country-select');
 const confirmContact = document.querySelector('.contactToDelete');
 
@@ -28,7 +30,9 @@ document.querySelectorAll('.category-div').forEach(div => {
 countrySelection.forEach(selection => {
     selection.addEventListener('click', () => {
         countryButton.firstChild.className = (`flag ${selection.dataset.flag} me-2`);
+        countryButtonModify.firstChild.className = (`flag ${selection.dataset.flag} me-2`);
         countryButton.firstChild.dataset.flag = (`${selection.dataset.flag}`);
+        countryButtonModify.firstChild.dataset.flag = (`${selection.dataset.flag}`);
     });
 });
 
@@ -188,8 +192,9 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
     phoneDiv.appendChild(fixeDiv);
 
     const fixeNbDiv = document.createElement('a');
-    fixeNbDiv.className = 'card-text';
+    fixeNbDiv.className = 'card-text mailto';
     fixeNbDiv.setAttribute('href', `tel:${list[i].phone}`);
+    fixeNbDiv.name = 'phoneNb';
     fixeNbDiv.textContent = list[i].phone;
     phoneDiv.appendChild(fixeNbDiv);
 
@@ -204,6 +209,7 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
     const mobileNbDiv = document.createElement('a');
     mobileNbDiv.className = 'card-text';
     mobileNbDiv.setAttribute('href', `tel:${list[i].mobile}`);
+    mobileNbDiv.name = 'mobileNb';
     mobileNbDiv.textContent = list[i].mobile;
     phoneMobileDiv.appendChild(mobileNbDiv);
 
@@ -222,6 +228,7 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
     const amailDiv = document.createElement('a');
     amailDiv.className = 'card-text';
     amailDiv.setAttribute('href', `mailto:${list[i].email}`);
+    amailDiv.name = 'mailto';
     amailDiv.textContent = list[i].email;
     mailDiv.appendChild(amailDiv);
 
@@ -252,14 +259,13 @@ function createRestOfCardHTML(i, cardDiv, list, action) {
         modifyBtn.className = 'btn btn-success text-white fw-bold text-uppercase';
         switch (action) {
             case 'add':
-                modifyBtn.id = `modify${i}`;
-                modifyBtn.name = 'modifyBtnAdd';
+                modifyBtn.id = `modify-${i}`;
                 break;
             case 'search':
-                modifyBtn.id = `modify${list[i].id}-${i}`;
-                modifyBtn.name = 'modifyBtnSearch';
+                modifyBtn.id = `modify-${list[i].id}-${i}`;
                 break;
-        };
+            };
+        modifyBtn.name = 'modifyBtn';
         modifyBtn.textContent = 'Modifier';
         footerDiv.appendChild(modifyBtn);
     

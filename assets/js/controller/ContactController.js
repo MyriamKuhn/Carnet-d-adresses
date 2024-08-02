@@ -426,6 +426,9 @@ let contactList = [
 let contactListSearched = [];
 let idToDelete;
 let idToDeleteInSearch;
+let idToModify;
+let idToModifyInSearch;
+let contactToModify;
 
 // Chargement de la liste des contacts au démarrage
 if(contactList != []) {
@@ -479,38 +482,82 @@ const getDatasFromForm = (form) => {
     const email = data.get('email');
     const notes = data.get('notes');
     // Récupération des données des catégories
-    const categoryList = document.querySelectorAll('[name="category"]');
     const categorySelectedList = [];
-    categoryList.forEach(category => {
-        if(category.checked) {
-            categorySelectedList.push(category.id);
-        };
-    });
-    // Récupération des données du sexe
-    const genderList = document.querySelectorAll('[name="gender"]');
-    let genderName;
-    genderList.forEach(gender => {
-        if(gender.checked) {
-            genderName = gender.id;
-        };
-    });
-    // Récupération des données du pays
-    const flag = document.querySelector('.country-button div').dataset.flag;
-
-    return {
-        'category': categorySelectedList,
-        'gender': genderName,
-        'firstname': firstname,
-        'lastname': lastname,
-        'address': address, 
-        'flag': flag,
-        'zipCode': zipCode,
-        'city': city,
-        'phone': phone,
-        'mobile': mobile,
-        'email': email,
-        'notes': notes,
+    if (form === formAdd) {
+        const categoryList = document.querySelectorAll('[name="category"]');
+        categoryList.forEach(category => {
+            if(category.checked) {
+                categorySelectedList.push(category.id);
+            };
+        });
+    } else {
+        const categoryList = document.querySelectorAll('[name="category-modify"]');
+        categoryList.forEach(category => {
+            if (category.checked) {
+                const catName = category.id.split('-');
+                const categoryName = `${catName[0]}-${catName[1]}`;
+                categorySelectedList.push(categoryName);
+            };
+        });
     };
+    // Récupération des données du sexe
+    let genderName;
+    if (form === formAdd) {
+        const genderList = document.querySelectorAll('[name="gender"]');
+        genderList.forEach(gender => {
+            if(gender.checked) {
+                genderName = gender.id;
+            };
+        });
+    } else {
+        const genderList = document.querySelectorAll('[name="gender-modify"]');
+        genderList.forEach(gender => {
+            if(gender.checked) {
+                const gendName = gender.id.split('-');
+                genderName = `${gendName[0]}-${gendName[1]}`;
+            };
+        });
+    };
+    // Récupération des données du pays
+    let flag;
+    if (form === formAdd) {
+        flag = document.querySelector('[name="country"] div').dataset.flag;
+    } else {
+        flag = document.querySelector('[name="country-modify"] div').dataset.flag;
+    };
+    
+    if (form === formAdd) {
+        return {
+            'category': categorySelectedList,
+            'gender': genderName,
+            'firstname': firstname,
+            'lastname': lastname,
+            'address': address, 
+            'flag': flag,
+            'zipCode': zipCode,
+            'city': city,
+            'phone': phone,
+            'mobile': mobile,
+            'email': email,
+            'notes': notes,
+        };
+    } else {
+        return {
+            'category': categorySelectedList,
+            'gender': genderName,
+            'firstname': firstname,
+            'lastname': lastname,
+            'address': address, 
+            'flag': flag,
+            'zipCode': zipCode,
+            'city': city,
+            'phone': phone,
+            'mobile': mobile,
+            'email': email,
+            'notes': notes,
+        };
+    }
+    
 };
 
 // Ajouter des contacts
@@ -603,5 +650,58 @@ document.addEventListener('click', (event) => {
                 createCardHTML(contactListSearched, 'search');
             };
             break;
+        case 'modifyBtn':
+            const modifyTargetId = event.target.id.split('-');
+            idToModify = modifyTargetId[1];
+            contactToModify = contactList[idToModify];
+            if(document.querySelector('.searchDiv .contact-card') != null) {
+                const searchModifyTargetId = event.target.id.split('-');
+                idToModifyInSearch = searchModifyTargetId[2];
+            };
+            addValuesToForm();
+            const modifyModal = new bootstrap.Modal(document.getElementById('modifyModal'));
+            modifyModal.show();
+            break;
+        case 'confirmModifyBtn':
+            let modifiedDatas = getDatasFromForm(modifyAdd);
+            contactList[idToModify] = modifiedDatas;
+            sortTheLists(contactList);
+            createCardHTML(contactList, 'add');
+            if(document.querySelector('.searchDiv .contact-card') != null) {
+                contactListSearched[idToModifyInSearch] = modifiedDatas;
+                sortTheLists(contactListSearched);
+                createCardHTML(contactListSearched, 'search');
+            };
+            break;
+        case 'mailto':
+            window.location.href = "mailto:myriam.kuehn@free.fr";
+            break;
+        case 'mobileNb':
+            window.location.href = "tel:myriam.kuehn@free.fr";
+        case 'phoneNb':
+            window.location.href = "tel:myriam.kuehn@free.fr";
     };
 });
+
+// Ajouter les valeurs du contact au formulaire
+function addValuesToForm () {
+    document.querySelector('#modifyAdd').reset();
+    document.querySelector('#firstName-modify').value = contactToModify.firstname;
+    document.querySelector('#lastName-modify').value = contactToModify.lastname;
+    document.querySelector('#address-modify').value = contactToModify.address;
+    document.querySelector('#zipCode-modify').value = contactToModify.zipCode;
+    document.querySelector('#city-modify').value = contactToModify.city;
+    document.querySelector('#phone-modify').value = contactToModify.phone;
+    document.querySelector('#mobile-modify').value = contactToModify.mobile;
+    document.querySelector('#mail-modify').value = contactToModify.email;
+    document.querySelector('#notes-modify').value = contactToModify.notes;
+
+    document.querySelector(`#${contactToModify.gender}-modify`).checked = true;
+
+    document.querySelector('[name="country-modify"] div').className = `flag ${contactToModify.flag} me-2`;
+    document.querySelector('[name="country-modify"] div').dataset.flag = (`${contactToModify.flag}`);
+
+    contactToModify.category.forEach(category => {
+        document.querySelector(`#${category}-modify`).checked = true;
+    });
+};
