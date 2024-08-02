@@ -18,9 +18,9 @@
     <!-- START : Header -->
     <header class="header">
         <!-- START : Navbar -->
-        <nav class="navbar navbar-expand-lg bg-white shadow fixed-top">
+        <nav class="navbar navbar-expand-lg bg-white shadow fixed-top z-2">
             <div class="container-fluid px-5">
-                <a class="navbar-brand fw-bold logo-text fs-1 w-25" href="#">
+                <a class="navbar-brand fw-bold logo-text fs-1 w-25">
                     <img src="./assets/images/logo.svg" class="logo-img" alt="Logo de ContactSaver">
                     ContactSaver
                 </a>
@@ -42,6 +42,7 @@
                 </div>
             </div>
         </nav>
+        <div id="home"></div>
         <!-- END : Navbar -->
     </header>
     <!-- END : Header -->
@@ -94,6 +95,28 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Back To Top -->
+        <a class="btn btn-primary" href="#home" id="scrollTopButton" name="scrollTopButton">
+            <i class="bi bi-chevron-up text-white"></i>
+        </a>
+
+        <!-- Toast for the Cookies -->
+        <div class="toast show z-3 position-fixed top-0 start-50 translate-middle-x bg-primary" role="alert" aria-live="Alerte cookies" aria-atomic="true" data-autohide="false">
+            <div class="toast-header justify-content-between">
+                <div class="d-flex">
+                    <img src="./assets/images/logo.svg" class="modal-img" alt="Logo de ContactSaver">
+                    <div class="modal-title fs-3 fw-bold ps-1">ContactSaver</div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fermer"></button>
+            </div>
+            <div class="toast-body">
+                <p class="fw-bold">Ce site web utilise des cookies.</p>
+                <p>
+                    ContactSaver utilise des cookies sur le présent site Internet. Les cookies strictement nécessaires sont indispensables au bon fonctionnement du site Internet et ne peuvent pas être refusés.
+                </p>
             </div>
         </div>
 
@@ -152,8 +175,8 @@
 
     <!-- START : Footer -->
     <footer>
-        <nav class="navbar bg-white shadow fixed-bottom">
-            <div class="container-fluid px-5 justify-content-between">
+        <nav class="navbar bg-white shadow sticky-bottom">
+            <div class="container-fluid mx-5 mt-3 border-top">
                 <div class="navbar-text text-center pe-2">
                     ©2024 Myriam Kühn
                 </div>
@@ -626,5 +649,6 @@
     <script src="./assets/js/formsFuntions.js"></script>
     <script type="module" src="./assets/js/controller/ContactController.js"></script>
     <script src="./assets/js/connexion.js"></script>
+    <script src="./assets/js/backtotop.js"></script>
 </body>
 </html>

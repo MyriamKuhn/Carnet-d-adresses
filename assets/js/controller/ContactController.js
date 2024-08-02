@@ -681,6 +681,8 @@ document.addEventListener('click', (event) => {
             window.location.href = event.target.href;
         case 'phoneNb':
             window.location.href = event.target.href;
+        case 'scrollTopButton':
+            window.location.href = event.target.href;
     };
 });
 
