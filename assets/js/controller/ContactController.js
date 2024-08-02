@@ -570,7 +570,8 @@ const addContactToList = (datas) => {
             const ln = contactList[i].lastname;
             const lnSearch = ln.toLowerCase();
             if (fnSearch === datas.firstname.toLowerCase() && lnSearch === datas.lastname.toLowerCase()) {
-                alert("Ce contact existe déjà !"); // TODO:Fenêtre alerte
+                const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                errorModal.show();
                 isFounded = true;
                 break;
             };
@@ -674,12 +675,12 @@ document.addEventListener('click', (event) => {
             };
             break;
         case 'mailto':
-            window.location.href = "mailto:myriam.kuehn@free.fr";
+            window.location.href = event.target.href;
             break;
         case 'mobileNb':
-            window.location.href = "tel:myriam.kuehn@free.fr";
+            window.location.href = event.target.href;
         case 'phoneNb':
-            window.location.href = "tel:myriam.kuehn@free.fr";
+            window.location.href = event.target.href;
     };
 });
 
